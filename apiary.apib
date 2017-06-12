@@ -1,0 +1,300 @@
+FORMAT: 1A
+HOST: https://esn.org/
+
+# ESN API Documentation
+ESN API documentation for ESN project. This project is divided
+to many phases. This version of the API is for version 01.
+
+
+# Allowed HTTPs requests:
+<pre>
+POST     : To create resource 
+PUT    : Update resource
+GET     : Get a resource or list of resources
+DELETE  : To delete resource
+</pre>
+
+# Description Of Usual Server Responses:
+- 200 `OK` - the request was successful (some API calls may return 201 instead).
+- 201 `Created` - the request was successful and a resource was created.
+- 204 `No Content` - the request was successful but there is no representation to return (i.e. the response is empty).
+- 400 `Bad Request` - the request could not be understood or was missing required parameters.
+- 401 `Unauthorized` - authentication failed or user doesn't have permissions for requested operation.
+- 403 `Forbidden` - access denied.
+- 404 `Not Found` - resource was not found.
+- 405 `Method Not Allowed` - requested method is not supported for resource.
+- 500 `Internal Server Error` - server error 
+
+
+# Authentication
+<table>
+    <tr>
+        <td> Token </td>
+        <td> Token/API key </td>    
+    </tr>
+</table>
+
+# Section
+Represents city and university details. With one city, user
+can choose more universities.
+
+---
+**City attributes:**
+
+- id `(Number)` : Unique Identifier. 
+- name `(String)` : City Name.
+- latitude `(String)` : Latitude Coordinates of the City.
+- longtitude `(String)` : Longtitude Coordinates of the City.
+
+---
+
+**University attributes:**
+
+- id `(Number)` : Unique Identifier. 
+- name `(String)` : University Name.
+
+---
+
+## Section Collection [/sections]
+### List all cities and related universities [GET]
+This is called when user starts the app for the first time 
+and when user change settings in the app settings section.
+
+User can choose one city and more universtities.
+
+Based on the GPS is automatically choosen city where is the user.
+He can change this city in the app manually.
+
+Cities and universities are ordered alphabetically 
+from the server side.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id" : 1,
+                "name": "Prague",
+                "latitude": "14.4378005",
+                "longitude" : "50.0755381",
+                "universities": [
+                    {
+                        "id": 1,
+                        "name": "CTU"
+                    }, {
+                        "id": 2,
+                        "name": "FIT"
+                    }, {
+                        "id": 3,
+                        "name": "CTU1"
+                    }
+                ]
+            },
+            {
+                "id" : 2,
+                "name": "Olomouc",
+                "latitude": "49.59552",
+                "longitude" : "17.25175",
+                "universities": [
+                    {
+                        "id": 4,
+                        "name": "Sts Cyril and Methodius Faculty of Theology"
+                    }, {
+                        "id": 5,
+                        "name": "Faculty of Medicine and Dentistry"
+                    }, {
+                        "id": 6,
+                        "name": "Faculty of Arts"
+                    }, {
+                        "id": 7,
+                        "name": "Faculty of Science"
+                    }, {
+                        "id": 8,
+                        "name": "Faculty of Education"
+                    }, {
+                        "id": 9,
+                        "name": "Faculty of Physical Culture"
+                    }
+                ]
+            }
+        ]
+
+## Category Collection [/categories{?universities}]
+---
+Represents subcategory and category details. One main category contains
+more subcategories, where one subcategory can be in more
+main categories.
+
+---
+**Subcategory attributes:**
+
+- id `(Number)` : Unique Identifier. 
+- name `(String)` : Subcategory Name.
+- color `(String)` : Subcategory Color.
+- icon `(URL)` : Subcategory Icon.
+
+---
+
+**Category attributes:**
+
+- id `(Number)` : Unique Identifier. 
+- name `(String)` : Category Name.
+- color `(String)` : Category Color.
+- icon `(URL)` : Category Icon.
+
+---
+### List all categories and subcategories [GET]
+
+Subcategories and categories are ordered based on the order
+from the server side.
+
+We use subcategory color and icon. When there is no icon and
+color for the subcategory, you can use category color and icon.
+Also you can use category color and icon when data are
+grouped on the map.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
+
++ Parameters
+    + universities (array[int])... array of the selected universities ids.
+
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id" : 1,
+                "name" : "Vodafone",
+                "color" : #333333,
+                "icon" : "",
+                "subcategories": [
+                    {
+                        "id": 1,
+                        "name": "Prodejna",
+                        "color" : #123456,
+                        "icon" : ""
+                    }, {
+                        "id": 2,
+                        "name": "Lekar",
+                        "color" : #456322,
+                        "icon" : ""
+                    }, {
+                        "id": 3,
+                        "name": "Kafe",
+                        "color" : #334112,
+                        "icon" : ""
+                    }
+                ]
+            },
+            {
+                "id" : 2,
+                "name" : "Discount",
+                "color" : #983245,
+                "icon" : "",
+                "subcategories": [
+                    {
+                        "id": 1,
+                        "name": "Prodejna",
+                        "color" : #123456,
+                        "icon" : ""
+                    }, {
+                        "id": 6,
+                        "name": "Zabava",
+                        "color" : #456398,
+                        "icon" : ""
+                    }, {
+                        "id": 10,
+                        "name": "Kino",
+                        "color" : #33983,
+                        "icon" : ""
+                    }
+                ]
+            }
+        ]
+
+
+
+## POI Collection [/pois/{category}/{subcategory}]
+---
+Represents Point of Interest details. One POI can be in more subcategories.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier. 
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longtitude `(String)` : POI Longtitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI Body of the Content Section.
+---
+
+### List all POIs [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
+
++ Parameters
+    + category (Number)... id of the main category.
+    + subcategory (Number)... id of the subcategory.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id" : 1,
+                "category_path" : "Vodafone-Kafe",
+                "name" : "Kafe Blue",
+                "full_address" : "Riegerova 221/2, 123 00, Olomouc",
+                "latitude" : "",
+                "longtitude" : "",
+                "preview_image" : "",
+                "image_list" : [
+                    {
+                        "id" : 1,
+                        "image_url" : "",
+                        "order" : 1
+                        },
+                    {
+                        "id" : 2,
+                        "image_url" : "",
+                        "order" : 2
+                    },
+                    {
+                        "id" : 3,
+                        "image_url" : "",
+                        "order" : 3
+                    }
+                ],
+                "content" : [
+                    {
+                        "content_title" : "Otvaracie hodiny",
+                        "content_body" : "Od pondelka do piatku"
+                    },
+                    {
+                        "content_title" : "Informacie",
+                        "content_body" : "Toto je super miesto"
+                    }
+                
+                ]
+            }
+        ]

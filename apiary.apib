@@ -123,13 +123,14 @@ from the server side.
             }
         ]
 
-## Category Collection [/categories{?universities}]
+## Subcategory Collection [/subcategories{?universities}]
 ---
-Represents subcategory and category details. One main category contains
+Represents subcategory a details. One main category contains
 more subcategories, where one subcategory can be in more
 main categories.
 
 ---
+
 **Subcategory attributes:**
 
 - id `(Number)` : Unique Identifier. 
@@ -139,15 +140,7 @@ main categories.
 
 ---
 
-**Category attributes:**
-
-- id `(Number)` : Unique Identifier. 
-- name `(String)` : Category Name.
-- color `(String)` : Category Color.
-- icon `(URL)` : Category Icon.
-
----
-### List all categories and subcategories and pois [GET]
+### List all subcategories [GET]
 
 Subcategories and categories are ordered based on the order
 from the server side.
@@ -176,304 +169,22 @@ In this call you can also get list of 10 pois for each subcategory.
                 "id" : 1,
                 "name" : "Vodafone",
                 "color" : "#333333",
-                "icon" : "",
-                "subcategories": [
-                    {
-                        "id": 1,
-                        "name": "Prodejna",
-                        "color" : "#123456",
-                        "icon" : "",
-                        "pois" : [
-                            {
-                                "id" : 1,
-                                "category_path" : "Vodafone-Kafe",
-                                "name" : "Kafe Blue",
-                                "full_address" : "Riegerova 221/2, 123 00, Olomouc",
-                                "latitude" : "",
-                                "longtitude" : "",
-                                "website_link" : "https://www.facebook.com/",
-                                "preview_image" : "",
-                                "subcategory_id" : 2,
-                                "image_list" : [
-                                    {
-                                        "id" : 1,
-                                        "image_url" : "",
-                                        "order" : 1
-                                        },
-                                    {
-                                        "id" : 2,
-                                        "image_url" : "",
-                                        "order" : 2
-                                    },
-                                    {
-                                        "id" : 3,
-                                        "image_url" : "",
-                                        "order" : 3
-                                    }
-                                ],
-                                "content" : [
-                                    {
-                                        "content_title" : "Otvaracie hodiny",
-                                        "content_body" : "Od pondelka do piatku"
-                                    },
-                                    {
-                                        "content_title" : "Informacie",
-                                        "content_body" : "Toto je super miesto"
-                                    }
-                                
-                                ]
-                            }
-                        ]
-                        }, {
-                        "id": 2,
-                        "name": "Lekar",
-                        "color" : "#456322",
-                        "icon" : "",
-                        "pois" : [
-                            {
-                                "id" : 1,
-                                "category_path" : "Vodafone-Kafe",
-                                "name" : "Kafe Blue",
-                                "full_address" : "Riegerova 221/2, 123 00, Olomouc",
-                                "latitude" : "",
-                                "longtitude" : "",
-                                "website_link" : "https://www.facebook.com/",
-                                "preview_image" : "",
-                                "subcategory_id" : 2,
-                                "image_list" : [
-                                    {
-                                        "id" : 1,
-                                        "image_url" : "",
-                                        "order" : 1
-                                        },
-                                    {
-                                        "id" : 2,
-                                        "image_url" : "",
-                                        "order" : 2
-                                    },
-                                    {
-                                        "id" : 3,
-                                        "image_url" : "",
-                                        "order" : 3
-                                    }
-                                ],
-                                "content" : [
-                                    {
-                                        "content_title" : "Otvaracie hodiny",
-                                        "content_body" : "Od pondelka do piatku"
-                                    },
-                                    {
-                                        "content_title" : "Informacie",
-                                        "content_body" : "Toto je super miesto"
-                                    }
-                                
-                                ]
-                            }
-                        ]
-                    }, {
-                        "id": 3,
-                        "name": "Kafe",
-                        "color" : "#334112",
-                        "icon" : "",
-                        "pois" : [
-                            {
-                                "id" : 1,
-                                "category_path" : "Vodafone-Kafe",
-                                "name" : "Kafe Blue",
-                                "full_address" : "Riegerova 221/2, 123 00, Olomouc",
-                                "latitude" : "",
-                                "longtitude" : "",
-                                "website_link" : "https://www.facebook.com/",
-                                "preview_image" : "",
-                                "subcategory_id" : 2,
-                                "image_list" : [
-                                    {
-                                        "id" : 1,
-                                        "image_url" : "",
-                                        "order" : 1
-                                        },
-                                    {
-                                        "id" : 2,
-                                        "image_url" : "",
-                                        "order" : 2
-                                    },
-                                    {
-                                        "id" : 3,
-                                        "image_url" : "",
-                                        "order" : 3
-                                    }
-                                ],
-                                "content" : [
-                                    {
-                                        "content_title" : "Otvaracie hodiny",
-                                        "content_body" : "Od pondelka do piatku"
-                                    },
-                                    {
-                                        "content_title" : "Informacie",
-                                        "content_body" : "Toto je super miesto"
-                                    }
-                                
-                                ]
-                            }
-                        ]
-                    }
-                ]
+                "icon" : ""
             },
             {
                 "id" : 2,
-                "name" : "Discount",
-                "color" : "#983245",
-                "icon" : "",
-                "subcategories": [
-                    {
-                        "id": 1,
-                        "name": "Prodejna",
-                        "color" : "#123456",
-                        "icon" : "",
-                        "pois" : [
-                            {
-                                "id" : 1,
-                                "category_path" : "Vodafone-Kafe",
-                                "name" : "Kafe Blue",
-                                "full_address" : "Riegerova 221/2, 123 00, Olomouc",
-                                "latitude" : "",
-                                "longtitude" : "",
-                                "website_link" : "https://www.facebook.com/",
-                                "preview_image" : "",
-                                "subcategory_id" : 2,
-                                "image_list" : [
-                                    {
-                                        "id" : 1,
-                                        "image_url" : "",
-                                        "order" : 1
-                                        },
-                                    {
-                                        "id" : 2,
-                                        "image_url" : "",
-                                        "order" : 2
-                                    },
-                                    {
-                                        "id" : 3,
-                                        "image_url" : "",
-                                        "order" : 3
-                                    }
-                                ],
-                                "content" : [
-                                    {
-                                        "content_title" : "Otvaracie hodiny",
-                                        "content_body" : "Od pondelka do piatku"
-                                    },
-                                    {
-                                        "content_title" : "Informacie",
-                                        "content_body" : "Toto je super miesto"
-                                    }
-                                
-                                ]
-                            }
-                        ]
-                    }, {
-                        "id": 6,
-                        "name": "Zabava",
-                        "color" : "#456398",
-                        "icon" : "",
-                        "pois" : [
-                            {
-                                "id" : 1,
-                                "category_path" : "Vodafone-Kafe",
-                                "name" : "Kafe Blue",
-                                "full_address" : "Riegerova 221/2, 123 00, Olomouc",
-                                "latitude" : "",
-                                "longtitude" : "",
-                                "website_link" : "https://www.facebook.com/",
-                                "preview_image" : "",
-                                "subcategory_id" : 2,
-                                "image_list" : [
-                                    {
-                                        "id" : 1,
-                                        "image_url" : "",
-                                        "order" : 1
-                                        },
-                                    {
-                                        "id" : 2,
-                                        "image_url" : "",
-                                        "order" : 2
-                                    },
-                                    {
-                                        "id" : 3,
-                                        "image_url" : "",
-                                        "order" : 3
-                                    }
-                                ],
-                                "content" : [
-                                    {
-                                        "content_title" : "Otvaracie hodiny",
-                                        "content_body" : "Od pondelka do piatku"
-                                    },
-                                    {
-                                        "content_title" : "Informacie",
-                                        "content_body" : "Toto je super miesto"
-                                    }
-                                
-                                ]
-                            }
-                        ]
-                    }, {
-                        "id": 10,
-                        "name": "Kino",
-                        "color" : "#33983",
-                        "icon" : "",
-                        "pois" : [
-                            {
-                                "id" : 1,
-                                "category_path" : "Vodafone-Kafe",
-                                "name" : "Kafe Blue",
-                                "full_address" : "Riegerova 221/2, 123 00, Olomouc",
-                                "latitude" : "",
-                                "longtitude" : "",
-                                "website_link" : "https://www.facebook.com/",
-                                "preview_image" : "",
-                                "subcategory_id" : 2,
-                                "image_list" : [
-                                    {
-                                        "id" : 1,
-                                        "image_url" : "",
-                                        "order" : 1
-                                        },
-                                    {
-                                        "id" : 2,
-                                        "image_url" : "",
-                                        "order" : 2
-                                    },
-                                    {
-                                        "id" : 3,
-                                        "image_url" : "",
-                                        "order" : 3
-                                    }
-                                ],
-                                "content" : [
-                                    {
-                                        "content_title" : "Otvaracie hodiny",
-                                        "content_body" : "Od pondelka do piatku"
-                                    },
-                                    {
-                                        "content_title" : "Informacie",
-                                        "content_body" : "Toto je super miesto"
-                                    }
-                                
-                                ]
-                            }
-                        ]
-                    }
-                ]
+                "name" : "Discounts",
+                "color" : "#33323",
+                "icon" : ""
             }
         ]
 
 
-
-## POI Collection [/pois/{category}/{subcategory}]
+## POI Collection [/{category}/pois]
 ---
-Represents Point of Interest details. One POI can be in more subcategories.
-This is called when user click on show more button.
+Represents Point of Interest details and Category. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
 
 **POI attributes:**
 
@@ -488,7 +199,16 @@ This is called when user click on show more button.
 - content_title `(String)` : POI Title of the Content Section.
 - content_body `(String)` : POI Body of the Content Section.
 - website_link `(URL)` : POI Body of the Content Section.
-- subcategory_id `(Number)` : POI Subcategory Identifier.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+**Category attributes:**
+
+- id `(Number)` : Unique Identifier. 
+- name `(String)` : Category Name.
+- color `(String)` : Category Color.
+- icon `(URL)` : Category Icon.
+
 ---
 
 ### List all POIs [GET]
@@ -505,81 +225,79 @@ This call also contains information for the POI detail section.
 
 + Parameters
     + category (Number)... id of the main category.
-    + subcategory (Number)... id of the subcategory.
 
 + Response 200 (application/json)
 
         [
-            {
-                "id" : 1,
-                "category_path" : "Vodafone-Kafe",
-                "name" : "Kafe Blue",
-                "full_address" : "Riegerova 221/2, 123 00, Olomouc",
-                "latitude" : "",
-                "longtitude" : "",
-                "website_link" : "https://www.facebook.com/",
-                "preview_image" : "",
-                "subcategory_id" : 2,
-                "image_list" : [
+            {   "id" : 1,
+                "name" : "Vodafone",
+                "color" : "#333333",
+                "icon" : "",
+                "pois" : [
                     {
                         "id" : 1,
-                        "image_url" : "",
-                        "order" : 1
-                        },
-                    {
-                        "id" : 2,
-                        "image_url" : "",
-                        "order" : 2
-                    },
-                    {
-                        "id" : 3,
-                        "image_url" : "",
-                        "order" : 3
+                        "category_path" : "Vodafone-Kafe",
+                        "name" : "Kafe Blue",
+                        "full_address" : "Riegerova 221/2, 123 00, Olomouc",
+                        "latitude" : "",
+                        "longtitude" : "",
+                        "website_link" : "https://www.facebook.com/",
+                        "preview_image" : "",
+                        "subcategory_id" : [2, 1],
+                        "image_list" : [
+                            {
+                                "id" : 1,
+                                "image_url" : "",
+                                "order" : 1
+                                },
+                            {
+                                "id" : 2,
+                                "image_url" : "",
+                                "order" : 2
+                            },
+                            {
+                                "id" : 3,
+                                "image_url" : "",
+                                "order" : 3
+                            }
+                        ],
+                        "content" : [
+                            {
+                                "content_title" : "Otvaracie hodiny",
+                                "content_body" : "Od pondelka do piatku"
+                            },
+                            {
+                                "content_title" : "Informacie",
+                                "content_body" : "Toto je super miesto"
+                            }
+                        ]
                     }
-                ],
-                "content" : [
-                    {
-                        "content_title" : "Otvaracie hodiny",
-                        "content_body" : "Od pondelka do piatku"
-                    },
-                    {
-                        "content_title" : "Informacie",
-                        "content_body" : "Toto je super miesto"
-                    }
-                
                 ]
             }
         ]
         
 
-## Map POI Collection [/pois/{category}]
+## Update Collection [/update_from={datetime}]
 ---
-Represents Point of Interest details. One POI can be in more categories.
-This is called under the map view where are
-all pois grouped by main category.
+Sent all updated data as a difference between datetime and the current date.
 
-**POI attributes:**
+# States
+<table>
+    <tr>
+        <td> New </td>
+        <td> New data created </td>    
+    </tr>
+    <tr>
+        <td> Update </td>
+        <td> Updated existing data </td>    
+    </tr>
+    <tr>
+        <td> Delete </td>
+        <td> Deleted existing data </td>    
+    </tr>
+</table>
 
-- id `(Number)` : Unique Identifier. 
-- category_path `(String)` : Full Path for the Category.
-- full_address `(String)` : POI City.
-- name `(String)` : POI Name.
-- latitude `(String)` : POI Latitude coordinates.
-- longtitude `(String)` : POI Longtitude coordinates.
-- preview_image `(URL)` : POI Preview Image in the List View.
-- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
-- content_title `(String)` : POI Title of the Content Section.
-- content_body `(String)` : POI Body of the Content Section.
-- website_link `(URL)` : POI Body of the Content Section.
-- subcategory_id `(Number)` : POI Subcategory Identifier.
----
-
-### Map all POIs [GET]
-
-POIs are ordered based on the order from the server side.
-
-This call also contains information for the POI detail section.
-
+### Update all data [GET]
 + Request
     + Headers
 
@@ -587,48 +305,36 @@ This call also contains information for the POI detail section.
 
 
 + Parameters
-    + category (Number)... id of the main category.
-
+    + datetime (String) ... Timestamp in unix format: `YYYY-MM-DDTHH:MM:SS`.
+    
 + Response 200 (application/json)
-
+    
         [
-            {
-                "id" : 1,
-                "category_path" : "Vodafone-Kafe",
-                "name" : "Kafe Blue",
-                "full_address" : "Riegerova 221/2, 123 00, Olomouc",
-                "latitude" : "",
-                "longtitude" : "",
-                "website_link" : "https://www.facebook.com/",
-                "preview_image" : "",
-                "subcategory_id" : 2,
-                "image_list" : [
+            {   "subcategories" : [
                     {
                         "id" : 1,
-                        "image_url" : "",
-                        "order" : 1
-                        },
+                        "name" : "Vodafone",
+                        "color" : "#333333",
+                        "icon" : "",
+                        "state" : "New"
+                    },
                     {
                         "id" : 2,
-                        "image_url" : "",
-                        "order" : 2
-                    },
-                    {
-                        "id" : 3,
-                        "image_url" : "",
-                        "order" : 3
+                        "name" : "Discounts",
+                        "color" : "#33323",
+                        "icon" : "",
+                        "state" : "Delete"
                     }
-                ],
-                "content" : [
+                ]
+            },
+            {   "categories" : [
                     {
-                        "content_title" : "Otvaracie hodiny",
-                        "content_body" : "Od pondelka do piatku"
-                    },
-                    {
-                        "content_title" : "Informacie",
-                        "content_body" : "Toto je super miesto"
+                        "id" : 1,
+                        "name" : "Vodafone",
+                        "color" : "#333333",
+                        "icon" : "",
+                        "state" : "Update"
                     }
-                
                 ]
             }
         ]

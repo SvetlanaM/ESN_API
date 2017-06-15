@@ -34,6 +34,7 @@ DELETE  : To delete resource
     </tr>
 </table>
 
+        
 # Section
 Represents city and university details. With one city, user
 can choose more universities.
@@ -344,5 +345,42 @@ Sent all updated data as a difference between datetime and the current date.
                         "state" : "Update"
                     }
                 ]
+            }
+        ]
+        
+
+
+## Environment Collection [/environments]
+### Get environment state [GET]
+This is called when user starts the app for the first time 
+and when user change settings in the app settings section.
+
+When is_production is True, in the app you should use
+production url links for the other calls. When it is false, you
+should use development url links for the other calls.
+
+Represents environment for the api calls. It could be
+development or production.
+
+---
+**Environment attributes:**
+
+- id `(Number)` : Unique Identifier. 
+- is_production `(Boolean)` : Production Identifier.
+
+---
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
+
++ Response 200 (application/json)
+    
+        [
+            {
+                "id" : 1,
+                "is_production", True
             }
         ]

@@ -50,6 +50,7 @@ can choose more universities.
 - best_tip_image `(URL)` : City Best Offer Image.
 - latitude `(String)` : Latitude Coordinates of the City.
 - longtitude `(String)` : Longtitude Coordinates of the City.
+- city_desc `(String)` : Description of city. Short one.
 
 ---
 
@@ -57,6 +58,8 @@ can choose more universities.
 
 - id `(Number)` : Unique Identifier. 
 - name `(String)` : University Name.
+- section_name `(String)` : ESN section name. For future reference.
+- section_desc `(String)` : Description of section.
 
 ---
 
@@ -90,43 +93,52 @@ from the server side.
                 "best_tip_title" : "Tip: Try Proti Proudu in Prague",
                 "latitude": "14.4378005",
                 "longitude" : "50.0755381",
+                "city_desc" : "",
                 "universities": [
                     {
                         "id": 1,
-                        "name": "CTU"
+                        "name": "Charles University",
+                        "section_name": "IC CUNI",
+                        "section_desc": ""
                     }, {
                         "id": 2,
-                        "name": "FIT"
+                        "name": "Czech Technical University",
+                        "section_name": "ISC CTU in Prague",
+                        "section_desc": ""
                     }, {
                         "id": 3,
-                        "name": "CTU1"
+                        "name": "Czech University of Life Sciences",
+                        "section_name": "ESN CULS Prague",
+                        "section_desc": ""
+                    }, {
+                        "id": 4,
+                        "name": "University of Chemistry and Technology",
+                        "section_name": "ESN UCT Prague",
+                        "section_desc": ""
+                    }, {
+                        "id": 5,
+                        "name": "Universiy of Economics",
+                        "section_name": "ESN VSE Prague",
+                        "section_desc": ""
                     }
                 ]
             },
             {
                 "id" : 2,
                 "name": "Olomouc",
+                "city_image" : "",
+                "state" : "Czech Republic",
+                "best_tip_image" : "",
+                "best_tip_title" : "Best coffee shop in Olomouc",
                 "latitude": "49.59552",
                 "longitude" : "17.25175",
+                "city_desc" : "",
                 "universities": [
                     {
-                        "id": 4,
-                        "name": "Sts Cyril and Methodius Faculty of Theology"
-                    }, {
-                        "id": 5,
-                        "name": "Faculty of Medicine and Dentistry"
-                    }, {
                         "id": 6,
-                        "name": "Faculty of Arts"
-                    }, {
-                        "id": 7,
-                        "name": "Faculty of Science"
-                    }, {
-                        "id": 8,
-                        "name": "Faculty of Education"
-                    }, {
-                        "id": 9,
-                        "name": "Faculty of Physical Culture"
+                        "name": "Palacký University",
+                        "section_name": "ESN UP Olomouc",
+                        "section_desc": ""
                     }
                 ]
             }
@@ -143,11 +155,12 @@ main categories.
 **Subcategory attributes:**
 
 - id `(Number)` : Unique Identifier. 
+- parent_categoty `(Number)` : parent super category. server side
 - name `(String)` : Subcategory Name.
 - color `(String)` : Subcategory Color.
 - icon `(URL)` : Subcategory Icon.
+- order `(Number)` : listing priority. lower = more important. server side
 
----
 
 ### List all subcategories [GET]
 
@@ -174,18 +187,150 @@ In this call you can also get list of 10 pois for each subcategory.
 + Response 200 (application/json)
 
         [
-            {
-                "id" : 1,
-                "name" : "Vodafone",
-                "color" : "#333333",
-                "icon" : ""
-            },
-            {
-                "id" : 2,
-                "name" : "Discounts",
-                "color" : "#33323",
-                "icon" : ""
-            }
+                {
+                  "id":"1",
+                  "parent_category":"1",
+                  "name":"University",
+                  "color":"#2e3192",
+                  "icon":"",
+                  "order":"1"
+                },
+                {
+                  "id":"2",
+                  "parent_category":"1",
+                  "name":"Erasmus Student Network",
+                  "color":"#00aeef",
+                  "icon":"",
+                  "order":"2"
+                },
+                {
+                  "id":"5",
+                  "parent_category":"1",
+                  "name":"Canteens",
+                  "color":"#f47b20",
+                  "icon":"",
+                  "order":"3"
+                },
+                {
+                  "id":"4",
+                  "parent_category":"1",
+                  "name":"Faculties",
+                  "color":"#ec008c",
+                  "icon":"",
+                  "order":"4"
+                },
+                {
+                  "id":"3",
+                  "parent_category":"1",
+                  "name":"Dormitories",
+                  "color":"#7ac143",
+                  "icon":"",
+                  "order":"5"
+                },
+                {
+                  "id":"16",
+                  "parent_category":"2",
+                  "name":"Pub & Bars",
+                  "color":"#2e3192",
+                  "icon":"",
+                  "order":"1"
+                },
+                {
+                  "id":"8",
+                  "parent_category":"2",
+                  "name":"Groceries",
+                  "color":"#7ac143",
+                  "icon":"",
+                  "order":"2"
+                },
+                {
+                  "id":"9",
+                  "parent_category":"2",
+                  "name":"Shopping",
+                  "color":"#00aeef",
+                  "icon":"",
+                  "order":"3"
+                },
+                {
+                  "id":"6",
+                  "parent_category":"2",
+                  "name":"Doctors and health care",
+                  "color":"#ff0000",
+                  "icon":"",
+                  "order":"4"
+                },
+                {
+                  "id":"7",
+                  "parent_category":"2",
+                  "name":"Police",
+                  "color":"#2e3192",
+                  "icon":"",
+                  "order":"5"
+                },
+                {
+                  "id":"15",
+                  "parent_category":"2",
+                  "name":"Travel",
+                  "color":"#ec008c",
+                  "icon":"",
+                  "order":"6",
+                },
+                {
+                  "id":"14",
+                  "parent_category":"2",
+                  "name":"Culture",
+                  "color":"#f47b20",
+                  "icon":"",
+                  "order":"7"
+                },
+                {
+                  "id":"11",
+                  "parent_category":"3",
+                  "name":"Clubbing",
+                  "color":"#2e3192",
+                  "icon":"",
+                  "order":"1"
+                },
+                {
+                  "id":"10",
+                  "parent_category":"3",
+                  "name":"Food",
+                  "color":"#7ac143",
+                  "icon":"",
+                  "order":"2"
+                },
+                {
+                  "id":"12",
+                  "parent_category":"3",
+                  "name":"Entertainment",
+                  "color":"#f47b20",
+                  "icon":"",
+                  "order":"3"
+                },
+                {
+                  "id":"13",
+                  "parent_category":"3",
+                  "name":"Accomodation",
+                  "color":"#00aeef",
+                  "icon":"",
+                  "order":"4"
+                },
+                {
+                  "id":"17",
+                  "parent_category":"4",
+                  "name":"Vodafone shops",
+                  "color":"#E60000",
+                  "icon":"",
+                  "order":"1"
+                },
+                {
+                  "id":"18",
+                  "parent_category":"4",
+                  "name":"Charging places",
+                  "color":"#f47b20",
+                  "icon":"",
+                  "order":"2"
+                }
         ]
 
 
@@ -383,4 +528,53 @@ development or production.
                 "id" : 1,
                 "is_production", True
             }
+        ]
+        
+
+## Category Collection [/categories{?universities}]
+---
+Represents category a details.
+
+---
+
+**Category attributes:**
+
+- id `(Number)` : Unique Identifier. 
+- name `(String)` : Subcategory Name.
+- color `(String)` : Subcategory Color.
+- icon `(URL)` : Subcategory Icon.
+- order `(Number)` : listing priority. lower = more important. server side
+
+
+### List all categories [GET]
+
+Categories are ordered based on the order
+from the server side.
+
+We use category color and icon.
+Also you can use category color and icon when data are
+grouped on the map.
+
+
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
+
++ Parameters
+    + universities (array[int])... array of the selected universities ids.
+
+
++ Response 200 (application/json)
+
+        [
+                {
+                  "id":"1",
+                  "name":"University",
+                  "color":"#2e3192",
+                  "icon":"",
+                  "order":"1"
+                }
         ]

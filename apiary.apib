@@ -8,7 +8,7 @@ to many phases. This version of the API is for version 01.
 
 # Allowed HTTPs requests:
 <pre>
-POST     : To create resource 
+POST     : To create resource
 PUT    : Update resource
 GET     : Get a resource or list of resources
 DELETE  : To delete resource
@@ -23,18 +23,18 @@ DELETE  : To delete resource
 - 403 `Forbidden` - access denied.
 - 404 `Not Found` - resource was not found.
 - 405 `Method Not Allowed` - requested method is not supported for resource.
-- 500 `Internal Server Error` - server error 
+- 500 `Internal Server Error` - server error
 
 
 # Authentication
 <table>
     <tr>
         <td> Token </td>
-        <td> Token/API key </td>    
+        <td> Token/API key </td>
     </tr>
 </table>
 
-        
+
 # Section
 Represents city and university details. With one city, user
 can choose more universities.
@@ -42,7 +42,7 @@ can choose more universities.
 ---
 **City attributes:**
 
-- id `(Number)` : Unique Identifier. 
+- id `(Number)` : Unique Identifier.
 - name `(String)` : City Name.
 - city_image `(URL)` : City Image.
 - state `(String)` : City State.
@@ -56,7 +56,7 @@ can choose more universities.
 
 **University attributes:**
 
-- id `(Number)` : Unique Identifier. 
+- id `(Number)` : Unique Identifier.
 - name `(String)` : University Name.
 - section_name `(String)` : ESN section name. For future reference.
 - section_desc `(String)` : Description of section.
@@ -65,7 +65,7 @@ can choose more universities.
 
 ## Section Collection [/sections]
 ### List all cities and related universities [GET]
-This is called when user starts the app for the first time 
+This is called when user starts the app for the first time
 and when user change settings in the app settings section.
 
 User can choose one city and more universtities.
@@ -73,7 +73,7 @@ User can choose one city and more universtities.
 Based on the GPS is automatically choosen city where is the user.
 He can change this city in the app manually.
 
-Cities and universities are ordered alphabetically 
+Cities and universities are ordered alphabetically
 from the server side.
 
 + Request
@@ -144,9 +144,9 @@ from the server side.
             }
         ]
 
-## Subcategory Collection [/subcategories{?universities}]
+## Subcategory Collection [/subcategories{?category}]
 ---
-Represents subcategory a details. One main category contains
+Represents subcategory details. One main category contains
 more subcategories, where one subcategory can be in more
 main categories.
 
@@ -154,8 +154,8 @@ main categories.
 
 **Subcategory attributes:**
 
-- id `(Number)` : Unique Identifier. 
-- parent_categoty `(Number)` : parent super category. server side
+- id `(Number)` : Unique Identifier.
+- parent_category `(Number)` : parent super category. server side
 - name `(String)` : Subcategory Name.
 - color `(String)` : Subcategory Color.
 - icon `(URL)` : Subcategory Icon.
@@ -172,8 +172,6 @@ color for the subcategory, you can use category color and icon.
 Also you can use category color and icon when data are
 grouped on the map.
 
-In this call you can also get list of 10 pois for each subcategory.
-
 + Request
     + Headers
 
@@ -181,7 +179,7 @@ In this call you can also get list of 10 pois for each subcategory.
 
 
 + Parameters
-    + universities (array[int])... array of the selected universities ids.
+    + category (Number)... id of the selected category.
 
 
 + Response 200 (application/json)
@@ -193,7 +191,8 @@ In this call you can also get list of 10 pois for each subcategory.
                   "name":"University",
                   "color":"#2e3192",
                   "icon":"",
-                  "order":"1"
+                  "order":"1",
+                  "pois" : [1, 2, 3]
                 },
                 {
                   "id":"2",
@@ -201,7 +200,8 @@ In this call you can also get list of 10 pois for each subcategory.
                   "name":"Erasmus Student Network",
                   "color":"#00aeef",
                   "icon":"",
-                  "order":"2"
+                  "order":"2",
+                  "pois" : [1, 2, 3]
                 },
                 {
                   "id":"5",
@@ -209,7 +209,8 @@ In this call you can also get list of 10 pois for each subcategory.
                   "name":"Canteens",
                   "color":"#f47b20",
                   "icon":"",
-                  "order":"3"
+                  "order":"3",
+                  "pois" : [1, 2, 3]
                 },
                 {
                   "id":"4",
@@ -217,7 +218,8 @@ In this call you can also get list of 10 pois for each subcategory.
                   "name":"Faculties",
                   "color":"#ec008c",
                   "icon":"",
-                  "order":"4"
+                  "order":"4",
+                  "pois" : [1, 2, 3]
                 },
                 {
                   "id":"3",
@@ -225,7 +227,8 @@ In this call you can also get list of 10 pois for each subcategory.
                   "name":"Dormitories",
                   "color":"#7ac143",
                   "icon":"",
-                  "order":"5"
+                  "order":"5",
+                  "pois" : [1, 2, 3]
                 },
                 {
                   "id":"16",
@@ -233,7 +236,8 @@ In this call you can also get list of 10 pois for each subcategory.
                   "name":"Pub & Bars",
                   "color":"#2e3192",
                   "icon":"",
-                  "order":"1"
+                  "order":"1",
+                  "pois" : [1, 2, 3]
                 },
                 {
                   "id":"8",
@@ -241,7 +245,8 @@ In this call you can also get list of 10 pois for each subcategory.
                   "name":"Groceries",
                   "color":"#7ac143",
                   "icon":"",
-                  "order":"2"
+                  "order":"2",
+                  "pois" : [1, 2, 3]
                 },
                 {
                   "id":"9",
@@ -249,7 +254,8 @@ In this call you can also get list of 10 pois for each subcategory.
                   "name":"Shopping",
                   "color":"#00aeef",
                   "icon":"",
-                  "order":"3"
+                  "order":"3",
+                  "pois" : [1, 2, 3]
                 },
                 {
                   "id":"6",
@@ -257,7 +263,8 @@ In this call you can also get list of 10 pois for each subcategory.
                   "name":"Doctors and health care",
                   "color":"#ff0000",
                   "icon":"",
-                  "order":"4"
+                  "order":"4",
+                  "pois" : [1, 2, 3]
                 },
                 {
                   "id":"7",
@@ -265,7 +272,8 @@ In this call you can also get list of 10 pois for each subcategory.
                   "name":"Police",
                   "color":"#2e3192",
                   "icon":"",
-                  "order":"5"
+                  "order":"5",
+                  "pois" : [1, 2, 3]
                 },
                 {
                   "id":"15",
@@ -274,6 +282,7 @@ In this call you can also get list of 10 pois for each subcategory.
                   "color":"#ec008c",
                   "icon":"",
                   "order":"6",
+                  "pois" : [1, 2, 3]
                 },
                 {
                   "id":"14",
@@ -281,7 +290,8 @@ In this call you can also get list of 10 pois for each subcategory.
                   "name":"Culture",
                   "color":"#f47b20",
                   "icon":"",
-                  "order":"7"
+                  "order":"7",
+                  "pois" : [1, 2, 3]
                 },
                 {
                   "id":"11",
@@ -289,7 +299,8 @@ In this call you can also get list of 10 pois for each subcategory.
                   "name":"Clubbing",
                   "color":"#2e3192",
                   "icon":"",
-                  "order":"1"
+                  "order":"1",
+                  "pois" : [1, 2, 3]
                 },
                 {
                   "id":"10",
@@ -297,7 +308,8 @@ In this call you can also get list of 10 pois for each subcategory.
                   "name":"Food",
                   "color":"#7ac143",
                   "icon":"",
-                  "order":"2"
+                  "order":"2",
+                  "pois" : [1, 2, 3]
                 },
                 {
                   "id":"12",
@@ -305,15 +317,17 @@ In this call you can also get list of 10 pois for each subcategory.
                   "name":"Entertainment",
                   "color":"#f47b20",
                   "icon":"",
-                  "order":"3"
+                  "order":"3",
+                  "pois" : [1, 2, 3]
                 },
                 {
                   "id":"13",
                   "parent_category":"3",
-                  "name":"Accomodation",
+                  "name":"Accommodation",
                   "color":"#00aeef",
                   "icon":"",
-                  "order":"4"
+                  "order":"4",
+                  "pois" : [1, 2, 3]
                 },
                 {
                   "id":"17",
@@ -321,7 +335,8 @@ In this call you can also get list of 10 pois for each subcategory.
                   "name":"Vodafone shops",
                   "color":"#E60000",
                   "icon":"",
-                  "order":"1"
+                  "order":"1",
+                  "pois" : [1, 2, 3]
                 },
                 {
                   "id":"18",
@@ -329,43 +344,35 @@ In this call you can also get list of 10 pois for each subcategory.
                   "name":"Charging places",
                   "color":"#f47b20",
                   "icon":"",
-                  "order":"2"
+                  "order":"2",
+                  "pois" : [1, 2, 3]
                 }
         ]
 
 
-## POI Collection [/{category}/pois]
+## POI Detail Collection [/poi/{id}]
 ---
-Represents Point of Interest details and Category. One POI can be in more subcategories and categories.
+Represents Point of Interest details. One POI can be in more subcategories and categories.
 This is called when user click on the main category tab or during the first
 call of the app, when is dowloaded default category.
 
 **POI attributes:**
 
-- id `(Number)` : Unique Identifier. 
+- id `(Number)` : Unique Identifier.
 - category_path `(String)` : Full Path for the Category.
 - full_address `(String)` : POI City.
 - name `(String)` : POI Name.
 - latitude `(String)` : POI Latitude coordinates.
-- longtitude `(String)` : POI Longtitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
 - preview_image `(URL)` : POI Preview Image in the List View.
 - image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
 - content_title `(String)` : POI Title of the Content Section.
 - content_body `(String)` : POI Body of the Content Section.
-- website_link `(URL)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
 - subcategory_id `(Array(Number))` : POI Subcategory Identifier.
 ---
 
-**Category attributes:**
-
-- id `(Number)` : Unique Identifier. 
-- name `(String)` : Category Name.
-- color `(String)` : Category Color.
-- icon `(URL)` : Category Icon.
-
----
-
-### List all POIs [GET]
+### POI Detail [GET]
 
 POIs are ordered based on the order from the server side.
 
@@ -378,58 +385,53 @@ This call also contains information for the POI detail section.
 
 
 + Parameters
-    + category (Number)... id of the main category.
+    + id (Number)... id of the POI.
 
 + Response 200 (application/json)
 
         [
-            {   "id" : 1,
-                "name" : "Vodafone",
-                "color" : "#333333",
-                "icon" : "",
-                "pois" : [
-                    {
-                        "id" : 1,
-                        "category_path" : "Vodafone-Kafe",
-                        "name" : "Kafe Blue",
-                        "full_address" : "Riegerova 221/2, 123 00, Olomouc",
-                        "latitude" : "",
-                        "longtitude" : "",
-                        "website_link" : "https://www.facebook.com/",
-                        "preview_image" : "",
-                        "subcategory_id" : [2, 1],
-                        "image_list" : [
-                            {
-                                "id" : 1,
-                                "image_url" : "",
-                                "order" : 1
-                                },
-                            {
-                                "id" : 2,
-                                "image_url" : "",
-                                "order" : 2
+           {
+                    "id" : 1,
+                    "category_path" : "Vodafone-Kafe",
+                    "name" : "Kafe Blue",
+                    "full_address" : "Riegerova 221/2, 123 00, Olomouc",
+                    "latitude" : "",
+                    "longitude" : "",
+                    "website_link" : "https://www.facebook.com/",
+                    "preview_image" : "",
+                    "subcategory_id" : [2, 1],
+                    "image_list" : [
+                        {
+                            "id" : 1,
+                            "image_url" : "",
+                            "order" : 1
                             },
-                            {
-                                "id" : 3,
-                                "image_url" : "",
-                                "order" : 3
-                            }
-                        ],
-                        "content" : [
-                            {
-                                "content_title" : "Otvaracie hodiny",
-                                "content_body" : "Od pondelka do piatku"
-                            },
-                            {
-                                "content_title" : "Informacie",
-                                "content_body" : "Toto je super miesto"
-                            }
-                        ]
-                    }
-                ]
-            }
+                        {
+                            "id" : 2,
+                            "image_url" : "",
+                            "order" : 2
+                        },
+                        {
+                            "id" : 3,
+                            "image_url" : "",
+                            "order" : 3
+                        }
+                    ],
+                    "content" : [
+                        {
+                            "content_title" : "Otvaracie hodiny",
+                            "content_body" : "Od pondelka do piatku"
+                        },
+                        {
+                            "content_title" : "Informacie",
+                            "content_body" : "Toto je super miesto"
+                        }
+                    ]
+                }
+            ]
+          }
         ]
-        
+
 
 ## Update Collection [/update_from={datetime}]
 ---
@@ -439,15 +441,15 @@ Sent all updated data as a difference between datetime and the current date.
 <table>
     <tr>
         <td> New </td>
-        <td> New data created </td>    
+        <td> New data created </td>
     </tr>
     <tr>
         <td> Update </td>
-        <td> Updated existing data </td>    
+        <td> Updated existing data </td>
     </tr>
     <tr>
         <td> Delete </td>
-        <td> Deleted existing data </td>    
+        <td> Deleted existing data </td>
     </tr>
 </table>
 
@@ -460,9 +462,9 @@ Sent all updated data as a difference between datetime and the current date.
 
 + Parameters
     + datetime (String) ... Timestamp in unix format: `YYYY-MM-DDTHH:MM:SS`.
-    
+
 + Response 200 (application/json)
-    
+
         [
             {   "subcategories" : [
                     {
@@ -492,12 +494,12 @@ Sent all updated data as a difference between datetime and the current date.
                 ]
             }
         ]
-        
+
 
 
 ## Environment Collection [/environments]
 ### Get environment state [GET]
-This is called when user starts the app for the first time 
+This is called when user starts the app for the first time
 and when user change settings in the app settings section.
 
 When is_production is True, in the app you should use
@@ -510,7 +512,7 @@ development or production.
 ---
 **Environment attributes:**
 
-- id `(Number)` : Unique Identifier. 
+- id `(Number)` : Unique Identifier.
 - is_production `(Boolean)` : Production Identifier.
 
 ---
@@ -522,14 +524,14 @@ development or production.
 
 
 + Response 200 (application/json)
-    
+
         [
             {
                 "id" : 1,
                 "is_production", True
             }
         ]
-        
+
 
 ## Category Collection [/categories{?universities}]
 ---
@@ -539,7 +541,7 @@ Represents category a details.
 
 **Category attributes:**
 
-- id `(Number)` : Unique Identifier. 
+- id `(Number)` : Unique Identifier.
 - name `(String)` : Subcategory Name.
 - color `(String)` : Subcategory Color.
 - icon `(URL)` : Subcategory Icon.

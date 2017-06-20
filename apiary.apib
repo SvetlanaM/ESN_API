@@ -389,48 +389,46 @@ This call also contains information for the POI detail section.
 
 + Response 200 (application/json)
 
-        [
+        
            {
-                    "id" : 1,
-                    "category_path" : "Vodafone-Kafe",
-                    "name" : "Kafe Blue",
-                    "full_address" : "Riegerova 221/2, 123 00, Olomouc",
-                    "latitude" : "",
-                    "longitude" : "",
-                    "website_link" : "https://www.facebook.com/",
-                    "preview_image" : "",
-                    "subcategory_id" : [2, 1],
-                    "image_list" : [
-                        {
-                            "id" : 1,
-                            "image_url" : "",
-                            "order" : 1
-                            },
-                        {
-                            "id" : 2,
-                            "image_url" : "",
-                            "order" : 2
+                "id" : 1,
+                "category_path" : "Vodafone-Kafe",
+                "name" : "Kafe Blue",
+                "full_address" : "Riegerova 221/2, 123 00, Olomouc",
+                "latitude" : "",
+                "longitude" : "",
+                "website_link" : "https://www.facebook.com/",
+                "preview_image" : "",
+                "subcategory_id" : [2, 1],
+                "image_list" : [
+                    {
+                        "id" : 1,
+                        "image_url" : "",
+                        "order" : 1
                         },
-                        {
-                            "id" : 3,
-                            "image_url" : "",
-                            "order" : 3
-                        }
-                    ],
-                    "content" : [
-                        {
-                            "content_title" : "Otvaracie hodiny",
-                            "content_body" : "Od pondelka do piatku"
-                        },
-                        {
-                            "content_title" : "Informacie",
-                            "content_body" : "Toto je super miesto"
-                        }
-                    ]
-                }
-            ]
-          }
-        ]
+                    {
+                        "id" : 2,
+                        "image_url" : "",
+                        "order" : 2
+                    },
+                    {
+                        "id" : 3,
+                        "image_url" : "",
+                        "order" : 3
+                    }
+                ],
+                "content" : [
+                    {
+                        "content_title" : "Otvaracie hodiny",
+                        "content_body" : "Od pondelka do piatku"
+                    },
+                    {
+                        "content_title" : "Informacie",
+                        "content_body" : "Toto je super miesto"
+                    }
+                ]
+            }
+        
 
 
 ## Update Collection [/update_from={datetime}]
@@ -542,9 +540,9 @@ Represents category a details.
 **Category attributes:**
 
 - id `(Number)` : Unique Identifier.
-- name `(String)` : Subcategory Name.
-- color `(String)` : Subcategory Color.
-- icon `(URL)` : Subcategory Icon.
+- name `(String)` : Category Name.
+- color `(String)` : Category Color.
+- icon `(URL)` : Category Icon.
 - order `(Number)` : listing priority. lower = more important. server side
 
 
@@ -557,26 +555,47 @@ We use category color and icon.
 Also you can use category color and icon when data are
 grouped on the map.
 
-
+Komentár (martin wpa): toto sú "super"kategórie, globálne pre všetkých,
+bez ohľadu na výber mesta a univerzity. Parameter je asi teda zbytočný. 
+Subkateórie sa potom radia do týchto kategórií (napr. Doctors and health patrí pod Services.)
 
 + Request
     + Headers
 
             Authorization: JWT ABC123
 
-
 + Parameters
     + universities (array[int])... array of the selected universities ids.
-
 
 + Response 200 (application/json)
 
         [
-                {
-                  "id":"1",
-                  "name":"University",
-                  "color":"#2e3192",
-                  "icon":"",
-                  "order":"1"
-                }
+            {
+                "id": 1,
+                "name": "University",
+                "icon": "",
+                "color": "#2e3192",
+                "order": 1
+            },
+            {
+                "id": 2,
+                "name": "Services",
+                "icon": "",
+                "color": "#7ac143",
+                "order": 2
+            },
+            {
+                "id": 3,
+                "name": "Discounts",
+                "icon": "",
+                "color": "#ec008c",
+                "order": 3
+            },
+            {
+                "id": 4,
+                "name": "Vodafone",
+                "icon": "",
+                "color": "#E60000",
+                "order": 4
+            }
         ]

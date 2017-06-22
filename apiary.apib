@@ -190,7 +190,7 @@ grouped on the map.
                   "parent_category":"1",
                   "name":"University",
                   "color":"#2e3192",
-                  "icon":"",
+                  "icon":"https://trello-attachments.s3.amazonaws.com/52589bca65b0b14e1d004d94/581efa2dafc1d1f2ca807a35/495860a75c30045d75db1af996616adc/coffee_map_icon.png",
                   "order":"1",
                   "pois" : [9, 10, 11, 12, 13]
                 },
@@ -349,85 +349,6 @@ grouped on the map.
                 }
         ]
 
-
-## POI Detail Collection [/poi/{id}]
----
-Represents Point of Interest details. One POI can be in more subcategories and categories.
-This is called when user click on the main category tab or during the first
-call of the app, when is dowloaded default category.
-
-**POI attributes:**
-
-- id `(Number)` : Unique Identifier.
-- category_path `(String)` : Full Path for the Category.
-- full_address `(String)` : POI City.
-- name `(String)` : POI Name.
-- latitude `(String)` : POI Latitude coordinates.
-- longitude `(String)` : POI Longitude coordinates.
-- preview_image `(URL)` : POI Preview Image in the List View.
-- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
-- content_title `(String)` : POI Title of the Content Section.
-- content_body `(String)` : POI Body of the Content Section.
-- website_link `(URL)` : POI URL of the partner website.
-- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
----
-
-### POI Detail [GET]
-
-POIs are ordered based on the order from the server side.
-
-This call also contains information for the POI detail section.
-
-+ Request
-    + Headers
-
-            Authorization: JWT ABC123
-
-
-+ Parameters
-    + id (Number)... id of the POI.
-
-+ Response 200 (application/json)
-
-        
-           {
-                "id" : 1,
-                "category_path" : "Category -> Subcategory",
-                "name" : "Example Point",
-                "full_address" : "Riegerova 221/2, 123 00, Olomouc",
-                "latitude" : "49.594584",
-                "longitude" : "17.248944",
-                "website_link" : "https://www.esn-cz.cz/",
-                "preview_image" : "https://www.esn-cz.cz/sites/default/files/esn-cz.png",
-                "subcategory_id" : [2, 1],
-                "image_list" : [
-                    {
-                        "id" : 1,
-                        "image_url" : "https://www.esn-cz.cz/sites/default/files/styles/zoom/public/gallery/DSC_0162.JPG?itok=zCsHVQ44",
-                        "order" : 1
-                        },
-                    {
-                        "id" : 2,
-                        "image_url" : "",
-                        "order" : 2
-                    },
-                    {
-                        "id" : 3,
-                        "image_url" : "",
-                        "order" : 3
-                    }
-                ],
-                "content" : [
-                    {
-                        "content_title" : "Opening hours",
-                        "content_body" : "<strong>All</strong> day <em>long</em>!"
-                    },
-                    {
-                        "content_title" : "Additional info",
-                        "content_body" : "What a place... awesome!"
-                    }
-                ]
-            }
 
 ## Update Collection [/update_from={datetime}]
 ---
@@ -598,1841 +519,3745 @@ Subkateórie sa potom radia do týchto kategórií (napr. Doctors and health pat
             }
         ]
 
-## POI Collection [/poi]
+## POI Detail 1 [/poi/1]
 ---
-Collection of all avaiable POIs fot testing purposes.
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
 ---
 
-### List all POIs [GET]
+### POI Detail [GET]
 
-List all POIs.
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
 
 + Request
     + Headers
-    
+
             Authorization: JWT ABC123
-        
+
 + Response 200 (application/json)
 
-        [
         {
-            "id": 1,
-            "longitude": "17.254988",
-            "preview_image": "",
-            "category_path": "Category -> Faculties",
-            "full_address": "Univerzitní 244/22, Olomouc",
-            "subcategory_id": [
-                4
-            ],
-            "name": "Sts Cyril and Methodius Faculty of Theology",
-            "website_link": "https://www.cmtf.upol.cz/en/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.59466"
-        },
-        {
-            "id": 2,
-            "longitude": "17.236611",
-            "preview_image": "",
-            "category_path": "Category -> Faculties",
-            "full_address": "Hněvotínská 3, Olomouc",
-            "subcategory_id": [
-                4
-            ],
-            "name": "Faculty of Medicine and Dentistry",
-            "website_link": "http://old.lf.upol.cz/en/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.58628"
-        },
-        {
-            "id": 3,
-            "longitude": "17.259804",
-            "preview_image": "",
-            "category_path": "Category -> Faculties",
-            "full_address": "Křížkovského 511/10, Olomouc",
-            "subcategory_id": [
-                4
-            ],
-            "name": "Faculty of Arts",
-            "website_link": "http://old.ff.upol.cz/en/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.594298"
-        },
-        {
-            "id": 4,
-            "longitude": "17.263317",
-            "preview_image": "",
-            "category_path": "Category -> Faculties",
-            "full_address": "tř. 17. listopadu 1192/12, Olomouc",
-            "subcategory_id": [
-                4
-            ],
-            "name": "Faculty of Science",
-            "website_link": "http://old.prf.upol.cz/en/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.592283"
-        },
-        {
-            "id": 5,
-            "longitude": "17.264651",
-            "preview_image": "",
-            "category_path": "Category -> Faculties",
-            "full_address": "Žižkovo náměstí 5, Olomouc",
-            "subcategory_id": [
-                4
-            ],
-            "name": "Faculty of Education",
-            "website_link": "http://old.pdf.upol.cz/en/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.595709"
-        },
-        {
-            "id": 6,
-            "longitude": "17.213481",
-            "preview_image": "",
-            "category_path": "Category -> Faculties",
-            "full_address": "tř. Míru 117, Olomouc",
-            "subcategory_id": [
-                4
-            ],
-            "name": "Faculty of Physical Culture",
-            "website_link": "https://ftk.upol.cz/en/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.594452"
-        },
-        {
-            "id": 7,
-            "longitude": "17.262653",
-            "preview_image": "",
-            "category_path": "Category -> Faculties",
-            "full_address": "tř. 17. listopadu 8, Olomouc",
-            "subcategory_id": [
-                4
-            ],
-            "name": "Faculty of Law",
-            "website_link": "http://old.pf.upol.cz/en/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.590794"
-        },
-        {
-            "id": 8,
-            "longitude": "17.234929",
-            "preview_image": "",
-            "category_path": "Category -> Faculties",
-            "full_address": "Hněvotínská 5, Olomouc",
-            "subcategory_id": [
-                4
-            ],
-            "name": "Faculty of Health Sciences",
-            "website_link": "http://old.fzv.upol.cz/en/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.585948"
-        },
-        {
-            "id": 9,
-            "longitude": "17.259223",
-            "preview_image": "",
-            "category_path": "Category -> University",
-            "full_address": "Křížkovského 8, Olomouc",
-            "subcategory_id": [
-                1
-            ],
-            "name": "International Relations Office",
-            "website_link": "https://www.upol.cz/en/students/exchange-students/international-offices/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.595124"
-        },
-        {
-            "id": 10,
-            "longitude": "17.260127",
-            "preview_image": "",
-            "category_path": "Category -> University",
-            "full_address": "Biskupské nám. 842/1, Olomouc",
-            "subcategory_id": [
-                1
-            ],
-            "name": "Library Zbrojnice",
-            "website_link": "https://www.knihovna.upol.cz/en/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.595704"
-        },
-        {
-            "id": 11,
-            "longitude": "17.250093",
-            "preview_image": "",
-            "category_path": "Category -> University",
-            "full_address": "U Sportovní haly 2a, Olomouc",
-            "subcategory_id": [
-                1
-            ],
-            "name": "Academic Sport Centre",
-            "website_link": "https://ascup.upol.cz/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.603545"
-        },
-        {
-            "id": 12,
-            "longitude": "17.260127",
-            "preview_image": "",
-            "category_path": "Category -> University",
-            "full_address": "Biskupské nám. 842/1, Olomouc",
-            "subcategory_id": [
-                1
-            ],
-            "name": "Computer Centre Zbrojnice",
-            "website_link": "https://cvt.upol.cz/en/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.595704"
-        },
-        {
-            "id": 13,
-            "longitude": "17.264651",
-            "preview_image": "",
-            "category_path": "Category -> University",
-            "full_address": "Žižkovo nám. 5, Olomouc",
-            "subcategory_id": [
-                1
-            ],
-            "name": "Centre for Students with Special Needs",
-            "website_link": "http://cps.upol.cz/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.595709"
-        },
-        {
-            "id": 14,
-            "longitude": "17.265361",
-            "preview_image": "",
-            "category_path": "Category -> Canteens",
-            "full_address": "tř. 17. listopadu 54, Olomouc",
-            "subcategory_id": [
-                5
-            ],
-            "name": "Canteen 17. listopadu",
-            "website_link": "http://old.skm.upol.cz/en/dining-halls/dining-hall-17-listopadu/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.594571"
-        },
-        {
-            "id": 15,
-            "longitude": "17.266427",
-            "preview_image": "",
-            "category_path": "Category -> Canteens",
-            "full_address": "Šmeralova 6, Olomouc",
-            "subcategory_id": [
-                5
-            ],
-            "name": "Canteen Šmeralova",
-            "website_link": "http://old.skm.upol.cz/en/dining-halls/dining-hall-smeralova/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.594181"
-        },
-        {
-            "id": 16,
-            "longitude": "17.259223",
-            "preview_image": "",
-            "category_path": "Category -> Canteens",
-            "full_address": "Křížkovského 8, Olomouc",
-            "subcategory_id": [
-                5
-            ],
-            "name": "Canteen Křížkovského",
-            "website_link": "http://old.skm.upol.cz/en/dining-halls/dining-hall-krizkovskeho/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.595124"
-        },
-        {
-            "id": 17,
-            "longitude": "17.213471",
-            "preview_image": "",
-            "category_path": "Category -> Canteens",
-            "full_address": "tř. Míru 115, Olomouc",
-            "subcategory_id": [
-                5
-            ],
-            "name": "Canteen Neředín",
-            "website_link": "http://old.skm.upol.cz/en/dining-halls/dining-hall-neredin/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.594447"
-        },
-        {
-            "id": 18,
-            "longitude": "17.279329",
-            "preview_image": "",
-            "category_path": "Category -> Canteens",
-            "full_address": "Šlechtitelů 11, Olomouc",
-            "subcategory_id": [
-                5
-            ],
-            "name": "Canteen Holice",
-            "website_link": "http://old.skm.upol.cz/en/dining-halls/dining-hall-holice/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.575285"
-        },
-        {
-            "id": 19,
-            "longitude": "17.265361",
-            "preview_image": "",
-            "category_path": "Category -> Dormitories",
-            "full_address": "tř. 17. listopadu 54, Olomouc",
-            "subcategory_id": [
-                3
-            ],
-            "name": "17. listopadu Dormitory",
-            "website_link": "http://old.skm.upol.cz/en/dormitories/dormitory-17-listopadu/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.594571"
-        },
-        {
-            "id": 20,
-            "longitude": "17.266888",
-            "preview_image": "",
-            "category_path": "Category -> Dormitories",
-            "full_address": "Šmeralova 8, Olomouc",
-            "subcategory_id": [
-                3
-            ],
-            "name": "Bedřicha Václavka Dormitory",
-            "website_link": "http://old.skm.upol.cz/en/dormitories/dormitory-bedricha-vaclavka/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.593191"
-        },
-        {
-            "id": 21,
-            "longitude": "17.248618",
-            "preview_image": "",
-            "category_path": "Category -> Dormitories",
-            "full_address": "U Sportovní haly 4, Olomouc",
-            "subcategory_id": [
-                3
-            ],
-            "name": "Evžena Rošického Dormitory",
-            "website_link": "http://old.skm.upol.cz/en/dormitories/dormitory-evzena-rosickeho/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.602606"
-        },
-        {
-            "id": 22,
-            "longitude": "17.265004",
-            "preview_image": "",
-            "category_path": "Category -> Dormitories",
-            "full_address": "Šmeralova 12, Olomouc",
-            "subcategory_id": [
-                3
-            ],
-            "name": "Generála Svobody Dormitory",
-            "website_link": "http://old.skm.upol.cz/en/dormitories/dormitory-generala-svobody/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.591787"
-        },
-        {
-            "id": 23,
-            "longitude": "17.266197",
-            "preview_image": "",
-            "category_path": "Category -> Dormitories",
-            "full_address": "Šmeralova 10, Olomouc",
-            "subcategory_id": [
-                3
-            ],
-            "name": "J. L. Fischera Dormitory",
-            "website_link": "http://old.skm.upol.cz/en/dormitories/dormitory-j-l-fischera/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.592567"
-        },
-        {
-            "id": 24,
-            "longitude": "17.214961",
-            "preview_image": "",
-            "category_path": "Category -> Dormitories",
-            "full_address": "U Letiště 786, Olomouc",
-            "subcategory_id": [
-                3
-            ],
-            "name": "Neředín Dormitory",
-            "website_link": "http://old.skm.upol.cz/en/dormitories/dormitory-neredin-ii/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.594235"
-        },
-        {
-            "id": 25,
-            "longitude": "17.251365",
-            "preview_image": "",
-            "category_path": "Category -> Erasmus Student Network",
-            "full_address": "tř. Svobody 26, Olomouc",
-            "subcategory_id": [
-                2
-            ],
-            "name": "ESN UP Olomouc Office",
-            "website_link": "http://esn.upol.cz/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.590329"
-        },
-        {
-            "id": 26,
-            "longitude": "17.257569",
-            "preview_image": "",
-            "category_path": "Category -> Entertainment",
-            "full_address": "Polská 1, Olomouc",
-            "subcategory_id": [
-                12
-            ],
-            "name": "Premiere Cinemas Šantovka",
-            "website_link": "http://olomouc.premierecinemas.cz/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.587027"
-        },
-        {
-            "id": 27,
-            "longitude": "17.24992",
-            "preview_image": "",
-            "category_path": "Category -> Culture",
-            "full_address": "Horní nám. 22, Olomouc",
-            "subcategory_id": [
-                14
-            ],
-            "name": "Moravian Theatre",
-            "website_link": "http://www.moravskedivadlo.cz/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.592884"
-        },
-        {
-            "id": 28,
-            "longitude": "17.256245",
-            "preview_image": "",
-            "category_path": "Category -> Culture",
-            "full_address": "Denisova 47, 771 11 Olomouc",
-            "subcategory_id": [
-                14
-            ],
-            "name": "Museum of Modern Art",
-            "website_link": "http://www.olmuart.cz/test/en/museum-of-modern-art/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.596109"
-        },
-        {
-            "id": 29,
-            "longitude": "17.24832",
-            "preview_image": "",
-            "category_path": "Category -> Food",
-            "full_address": "Riegrova 381/22, Olomouc",
-            "subcategory_id": [
-                10
-            ],
-            "name": "Riegrovka Restaurant",
-            "website_link": "https://en.riegrovka.eu/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.594942"
-        },
-        {
-            "id": 30,
-            "longitude": "17.24984",
-            "preview_image": "",
-            "category_path": "Category -> Food",
-            "full_address": "tř. Svobody 20, Olomouc",
-            "subcategory_id": [
-                10
-            ],
-            "name": "BerryBlue Cafe",
-            "website_link": "https://www.facebook.com/BerryBlue-Caf%C3%A9-1617524255240269/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.591524"
-        },
-        {
-            "id": 31,
-            "longitude": "17.246868",
-            "preview_image": "",
-            "category_path": "Category -> Food",
-            "full_address": "tř. Svobody 646/4, 779 00 Olomouc",
-            "subcategory_id": [
-                10
-            ],
-            "name": "KAFE JAK LUSK",
-            "website_link": "https://www.facebook.com/KAFEJAKLUSK/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.594876"
-        },
-        {
-            "id": 32,
-            "longitude": "17.228703",
-            "preview_image": "",
-            "category_path": "Category -> Food",
-            "full_address": "tř. Míru 260/32, 779 00 Olomouc",
-            "subcategory_id": [
-                10
-            ],
-            "name": "Bistro MY MEAL",
-            "website_link": "http://www.mymeal.cz/my-meal-olomouc/bistro",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.596746"
-        },
-        {
-            "id": 33,
-            "longitude": "17.266761",
-            "preview_image": "",
-            "category_path": "Category -> Clubbing",
-            "full_address": "Komenského 914, Olomouc",
-            "subcategory_id": [
-                11
-            ],
-            "name": "15 minut - Club & Pub",
-            "website_link": "https://www.facebook.com/klub15minut/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.597746"
-        },
-        {
-            "id": 34,
-            "longitude": "17.251415",
-            "preview_image": "",
-            "category_path": "Category -> Clubbing",
-            "full_address": "Mlýnská 4, Olomouc",
-            "subcategory_id": [
-                11
-            ],
-            "name": "Belmondo Club",
-            "website_link": "http://www.belmondo.cz/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.590881"
-        },
-        {
-            "id": 35,
-            "longitude": "17.257569",
-            "preview_image": "",
-            "category_path": "Category -> Groceries",
-            "full_address": "Polská 1, Olomouc",
-            "subcategory_id": [
-                8
-            ],
-            "name": "Albert Šantovka",
-            "website_link": "https://www.albert.cz/nase-prodejny/hypermarket-olomouc-santovka",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.587027"
-        },
-        {
-            "id": 36,
-            "longitude": "17.266197",
-            "preview_image": "",
-            "category_path": "Category -> Doctors and health care",
-            "full_address": "Šmeralova 10, Olomouc",
-            "subcategory_id": [
-                6
-            ],
-            "name": "MUDr. Jarmila Ševčíková",
-            "website_link": "http://www.mudrsevcikova.cz/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.592567"
-        },
-        {
-            "id": 37,
-            "longitude": "17.238222",
-            "preview_image": "",
-            "category_path": "Category -> Doctors and health care",
-            "full_address": "I.P.Pavlova 6, Olomouc",
-            "subcategory_id": [
-                6
-            ],
-            "name": "Hospital",
-            "website_link": "https://www.fnol.cz/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.583678"
-        },
-        {
-            "id": 38,
-            "longitude": "17.257569",
-            "preview_image": "",
-            "category_path": "Category -> Shopping",
-            "full_address": "Polská 1, Olomouc",
-            "subcategory_id": [
-                9
-            ],
-            "name": "Šantovka shopping centre",
-            "website_link": "https://www.galeriesantovka.cz/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.587027"
-        },
-        {
-            "id": 39,
-            "longitude": "17.22308",
-            "preview_image": "",
-            "category_path": "Category -> Groceries",
-            "full_address": "Pražská 39, Olomouc",
-            "subcategory_id": [
-                8
-            ],
-            "name": "Globus",
-            "website_link": "https://www.globus.cz/olomouc.html",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.601531"
-        },
-        {
-            "id": 40,
-            "longitude": "17.271885",
-            "preview_image": "",
-            "category_path": "Category -> Groceries",
-            "full_address": "Štursova 3, Olomouc",
-            "subcategory_id": [
-                8
-            ],
-            "name": "Kaufland",
-            "website_link": "http://www.kaufland.cz/Home/index.jsp?FilialID=5900",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.588445"
-        },
-        {
-            "id": 41,
-            "longitude": "17.251554",
-            "preview_image": "",
-            "category_path": "Category -> Groceries",
-            "full_address": "Lazecká 33, Olomouc",
-            "subcategory_id": [
-                8
-            ],
-            "name": "Lidl",
-            "website_link": "http://www.lidl.cz/cs/index.htm",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.60272"
-        },
-        {
-            "id": 42,
-            "longitude": "17.255284",
-            "preview_image": "",
-            "category_path": "Category -> Accomodation",
-            "full_address": "Denisova 292/33, 779 00 Olomouc",
-            "subcategory_id": [
-                13
-            ],
-            "name": "Miss Sophies Olomouc",
-            "website_link": "http://miss-sophies.com/olomouc/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.595878"
-        },
-        {
-            "id": 43,
-            "longitude": "17.258258",
-            "preview_image": "",
-            "category_path": "Category -> Accomodation",
-            "full_address": "Koželužská 945/31, 779 00 Olomouc",
-            "subcategory_id": [
-                13
-            ],
-            "name": "Long Story Short Hostel & Café",
-            "website_link": "https://www.facebook.com/LongStoryShortHostel/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.597896"
-        },
-        {
-            "id": 44,
-            "longitude": "17.277857",
-            "preview_image": "",
-            "category_path": "Category -> Travel",
-            "full_address": "Jeremenkova 103/23",
-            "subcategory_id": [
-                15
-            ],
-            "name": "Main Train Station",
-            "website_link": "http://jizdnirady.idnes.cz/vlakyautobusymhdvse/spojeni/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.592897"
-        },
-        {
-            "id": 45,
-            "longitude": "17.285392",
-            "preview_image": "",
-            "category_path": "Category -> Travel",
-            "full_address": "Sladkovského 142/37, 779 00 Olomouc",
-            "subcategory_id": [
-                15
-            ],
-            "name": "Main Bus Station",
-            "website_link": "http://jizdnirady.idnes.cz/vlakyautobusymhdvse/spojeni/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.587707"
-        },
-        {
-            "id": 46,
-            "longitude": "17.246945",
-            "preview_image": "",
-            "category_path": "Category -> Travel",
-            "full_address": "Legionářská 746/1, 779 00 Olomouc",
-            "subcategory_id": [
-                15
-            ],
-            "name": "Pub Transoprtation Office",
-            "website_link": "https://www.dpmo.cz/en/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.595952"
-        },
-        {
-            "id": 47,
-            "longitude": "17.261401",
-            "preview_image": "",
-            "category_path": "Category -> Pub & Bars",
-            "full_address": "1. máje 807/19, 779 00 Olomouc",
-            "subcategory_id": [
-                16
-            ],
-            "name": "The BLACK STUFF Irish Pub & Whisky Bar",
-            "website_link": "http://www.blackstuff.cz/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.597101"
-        },
-        {
-            "id": 48,
-            "longitude": "17.255214",
-            "preview_image": "",
-            "category_path": "Category -> Pub & Bars",
-            "full_address": "Univerzitní 227/6, 779 00 Olomouc",
-            "subcategory_id": [
-                16
-            ],
-            "name": "VERTIGO",
-            "website_link": "http://www.klubvertigo.cz/napojak.html",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.5953"
-        },
-        {
-            "id": 49,
-            "longitude": "17.266197",
-            "preview_image": "",
-            "category_path": "Category -> Pub & Bars",
-            "full_address": "Šmeralova 1116/10, 779 00 Olomouc",
-            "subcategory_id": [
-                16
-            ],
-            "name": "EXCELENT URBAN PUB DOGA",
-            "website_link": "http://www.pivnicedoga.cz/en/5576-2/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.592567"
-        },
-        {
-            "id": 50,
-            "longitude": "17.273441",
-            "preview_image": "",
-            "category_path": "Category -> Pub & Bars",
-            "full_address": "Zeyerova 809/17, Hodolany, 779 00 Olomouc",
-            "subcategory_id": [
-                16
-            ],
-            "name": "LOCAL LOKAL Industy PUB",
-            "website_link": "https://www.facebook.com/LOCAL-LOKAL-industry-pub-298386737227462/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.594013"
-        },
-        {
-            "id": 51,
-            "longitude": "17.257569",
-            "preview_image": "",
-            "category_path": "Category -> Vodafone shops",
-            "full_address": "Polská 1, OC Šantovka, 779 00 Olomouc",
-            "subcategory_id": [
-                17
-            ],
-            "name": "Vodafone Šantovka",
-            "website_link": "https://www.vodafone.cz/en/stores/store-detail/olomouc-oc-santovka/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.587027"
-        },
-        {
-            "id": 52,
-            "longitude": "17.22308",
-            "preview_image": "",
-            "category_path": "Category -> Vodafone shops",
-            "full_address": "Pražská 248/39, 779 00 Olomouc - Řepčín",
-            "subcategory_id": [
-                17
-            ],
-            "name": "Vodafone Globus",
-            "website_link": "https://www.vodafone.cz/en/stores/store-detail/olomouc-globus/business-poradce/",
-            "image_list": [
-                {
-                    "id": 1,
-                    "order": 1,
-                    "image_url": ""
-                },
-                {
-                    "id": 2,
-                    "order": 2,
-                    "image_url": ""
-                }
-            ],
-            "content": [
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                },
-                {
-                    "content_title": "Content block title",
-                    "content_body": "Opening hours 24/7"
-                }
-            ],
-            "latitude": "49.601531"
+                "id": 1,
+                "category_path": "Category -> Faculties",
+                "name": "Sts Cyril and Methodius Faculty of Theology",
+                "full_address": "Univerzitní 244/22, Olomouc",
+                "latitude": "49.59466",
+                "longitude": "17.254988",
+                "website_link": "https://www.cmtf.upol.cz/en/",
+                "preview_image": "",
+                "subcategory_id": [
+                        4
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
         }
-        ]
+
+
+## POI Detail 2 [/poi/2]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 2,
+                "category_path": "Category -> Faculties",
+                "name": "Faculty of Medicine and Dentistry",
+                "full_address": "Hněvotínská 3, Olomouc",
+                "latitude": "49.58628",
+                "longitude": "17.236611",
+                "website_link": "http://old.lf.upol.cz/en/",
+                "preview_image": "",
+                "subcategory_id": [
+                        4
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 3 [/poi/3]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 3,
+                "category_path": "Category -> Faculties",
+                "name": "Faculty of Arts",
+                "full_address": "Křížkovského 511/10, Olomouc",
+                "latitude": "49.594298",
+                "longitude": "17.259804",
+                "website_link": "http://old.ff.upol.cz/en/",
+                "preview_image": "",
+                "subcategory_id": [
+                        4
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 4 [/poi/4]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 4,
+                "category_path": "Category -> Faculties",
+                "name": "Faculty of Science",
+                "full_address": "tř. 17. listopadu 1192/12, Olomouc",
+                "latitude": "49.592283",
+                "longitude": "17.263317",
+                "website_link": "http://old.prf.upol.cz/en/",
+                "preview_image": "",
+                "subcategory_id": [
+                        4
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 5 [/poi/5]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 5,
+                "category_path": "Category -> Faculties",
+                "name": "Faculty of Education",
+                "full_address": "Žižkovo náměstí 5, Olomouc",
+                "latitude": "49.595709",
+                "longitude": "17.264651",
+                "website_link": "http://old.pdf.upol.cz/en/",
+                "preview_image": "",
+                "subcategory_id": [
+                        4
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 6 [/poi/6]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 6,
+                "category_path": "Category -> Faculties",
+                "name": "Faculty of Physical Culture",
+                "full_address": "tř. Míru 117, Olomouc",
+                "latitude": "49.594452",
+                "longitude": "17.213481",
+                "website_link": "https://ftk.upol.cz/en/",
+                "preview_image": "",
+                "subcategory_id": [
+                        4
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 7 [/poi/7]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 7,
+                "category_path": "Category -> Faculties",
+                "name": "Faculty of Law",
+                "full_address": "tř. 17. listopadu 8, Olomouc",
+                "latitude": "49.590794",
+                "longitude": "17.262653",
+                "website_link": "http://old.pf.upol.cz/en/",
+                "preview_image": "",
+                "subcategory_id": [
+                        4
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 8 [/poi/8]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 8,
+                "category_path": "Category -> Faculties",
+                "name": "Faculty of Health Sciences",
+                "full_address": "Hněvotínská 5, Olomouc",
+                "latitude": "49.585948",
+                "longitude": "17.234929",
+                "website_link": "http://old.fzv.upol.cz/en/",
+                "preview_image": "",
+                "subcategory_id": [
+                        4
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 9 [/poi/9]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 9,
+                "category_path": "Category -> University",
+                "name": "International Relations Office",
+                "full_address": "Křížkovského 8, Olomouc",
+                "latitude": "49.595124",
+                "longitude": "17.259223",
+                "website_link": "https://www.upol.cz/en/students/exchange-students/international-offices/",
+                "preview_image": "",
+                "subcategory_id": [
+                        1
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 10 [/poi/10]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 10,
+                "category_path": "Category -> University",
+                "name": "Library Zbrojnice",
+                "full_address": "Biskupské nám. 842/1, Olomouc",
+                "latitude": "49.595704",
+                "longitude": "17.260127",
+                "website_link": "https://www.knihovna.upol.cz/en/",
+                "preview_image": "",
+                "subcategory_id": [
+                        1
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 11 [/poi/11]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 11,
+                "category_path": "Category -> University",
+                "name": "Academic Sport Centre",
+                "full_address": "U Sportovní haly 2a, Olomouc",
+                "latitude": "49.603545",
+                "longitude": "17.250093",
+                "website_link": "https://ascup.upol.cz/",
+                "preview_image": "",
+                "subcategory_id": [
+                        1
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 12 [/poi/12]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 12,
+                "category_path": "Category -> University",
+                "name": "Computer Centre Zbrojnice",
+                "full_address": "Biskupské nám. 842/1, Olomouc",
+                "latitude": "49.595704",
+                "longitude": "17.260127",
+                "website_link": "https://cvt.upol.cz/en/",
+                "preview_image": "",
+                "subcategory_id": [
+                        1
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 13 [/poi/13]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 13,
+                "category_path": "Category -> University",
+                "name": "Centre for Students with Special Needs",
+                "full_address": "Žižkovo nám. 5, Olomouc",
+                "latitude": "49.595709",
+                "longitude": "17.264651",
+                "website_link": "http://cps.upol.cz/",
+                "preview_image": "",
+                "subcategory_id": [
+                        1
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 14 [/poi/14]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 14,
+                "category_path": "Category -> Canteens",
+                "name": "Canteen 17. listopadu",
+                "full_address": "tř. 17. listopadu 54, Olomouc",
+                "latitude": "49.594571",
+                "longitude": "17.265361",
+                "website_link": "http://old.skm.upol.cz/en/dining-halls/dining-hall-17-listopadu/",
+                "preview_image": "",
+                "subcategory_id": [
+                        5
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 15 [/poi/15]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 15,
+                "category_path": "Category -> Canteens",
+                "name": "Canteen Šmeralova",
+                "full_address": "Šmeralova 6, Olomouc",
+                "latitude": "49.594181",
+                "longitude": "17.266427",
+                "website_link": "http://old.skm.upol.cz/en/dining-halls/dining-hall-smeralova/",
+                "preview_image": "",
+                "subcategory_id": [
+                        5
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 16 [/poi/16]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 16,
+                "category_path": "Category -> Canteens",
+                "name": "Canteen Křížkovského",
+                "full_address": "Křížkovského 8, Olomouc",
+                "latitude": "49.595124",
+                "longitude": "17.259223",
+                "website_link": "http://old.skm.upol.cz/en/dining-halls/dining-hall-krizkovskeho/",
+                "preview_image": "",
+                "subcategory_id": [
+                        5
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 17 [/poi/17]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 17,
+                "category_path": "Category -> Canteens",
+                "name": "Canteen Neředín",
+                "full_address": "tř. Míru 115, Olomouc",
+                "latitude": "49.594447",
+                "longitude": "17.213471",
+                "website_link": "http://old.skm.upol.cz/en/dining-halls/dining-hall-neredin/",
+                "preview_image": "",
+                "subcategory_id": [
+                        5
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 18 [/poi/18]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 18,
+                "category_path": "Category -> Canteens",
+                "name": "Canteen Holice",
+                "full_address": "Šlechtitelů 11, Olomouc",
+                "latitude": "49.575285",
+                "longitude": "17.279329",
+                "website_link": "http://old.skm.upol.cz/en/dining-halls/dining-hall-holice/",
+                "preview_image": "",
+                "subcategory_id": [
+                        5
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 19 [/poi/19]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 19,
+                "category_path": "Category -> Dormitories",
+                "name": "17. listopadu Dormitory",
+                "full_address": "tř. 17. listopadu 54, Olomouc",
+                "latitude": "49.594571",
+                "longitude": "17.265361",
+                "website_link": "http://old.skm.upol.cz/en/dormitories/dormitory-17-listopadu/",
+                "preview_image": "",
+                "subcategory_id": [
+                        3
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 20 [/poi/20]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 20,
+                "category_path": "Category -> Dormitories",
+                "name": "Bedřicha Václavka Dormitory",
+                "full_address": "Šmeralova 8, Olomouc",
+                "latitude": "49.593191",
+                "longitude": "17.266888",
+                "website_link": "http://old.skm.upol.cz/en/dormitories/dormitory-bedricha-vaclavka/",
+                "preview_image": "",
+                "subcategory_id": [
+                        3
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 21 [/poi/21]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 21,
+                "category_path": "Category -> Dormitories",
+                "name": "Evžena Rošického Dormitory",
+                "full_address": "U Sportovní haly 4, Olomouc",
+                "latitude": "49.602606",
+                "longitude": "17.248618",
+                "website_link": "http://old.skm.upol.cz/en/dormitories/dormitory-evzena-rosickeho/",
+                "preview_image": "",
+                "subcategory_id": [
+                        3
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 22 [/poi/22]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 22,
+                "category_path": "Category -> Dormitories",
+                "name": "Generála Svobody Dormitory",
+                "full_address": "Šmeralova 12, Olomouc",
+                "latitude": "49.591787",
+                "longitude": "17.265004",
+                "website_link": "http://old.skm.upol.cz/en/dormitories/dormitory-generala-svobody/",
+                "preview_image": "",
+                "subcategory_id": [
+                        3
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 23 [/poi/23]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 23,
+                "category_path": "Category -> Dormitories",
+                "name": "J. L. Fischera Dormitory",
+                "full_address": "Šmeralova 10, Olomouc",
+                "latitude": "49.592567",
+                "longitude": "17.266197",
+                "website_link": "http://old.skm.upol.cz/en/dormitories/dormitory-j-l-fischera/",
+                "preview_image": "",
+                "subcategory_id": [
+                        3
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 24 [/poi/24]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 24,
+                "category_path": "Category -> Dormitories",
+                "name": "Neředín Dormitory",
+                "full_address": "U Letiště 786, Olomouc",
+                "latitude": "49.594235",
+                "longitude": "17.214961",
+                "website_link": "http://old.skm.upol.cz/en/dormitories/dormitory-neredin-ii/",
+                "preview_image": "",
+                "subcategory_id": [
+                        3
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 25 [/poi/25]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 25,
+                "category_path": "Category -> Erasmus Student Network",
+                "name": "ESN UP Olomouc Office",
+                "full_address": "tř. Svobody 26, Olomouc",
+                "latitude": "49.590329",
+                "longitude": "17.251365",
+                "website_link": "http://esn.upol.cz/",
+                "preview_image": "",
+                "subcategory_id": [
+                        2
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 26 [/poi/26]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 26,
+                "category_path": "Category -> Entertainment",
+                "name": "Premiere Cinemas Šantovka",
+                "full_address": "Polská 1, Olomouc",
+                "latitude": "49.587027",
+                "longitude": "17.257569",
+                "website_link": "http://olomouc.premierecinemas.cz/",
+                "preview_image": "",
+                "subcategory_id": [
+                        12
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 27 [/poi/27]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 27,
+                "category_path": "Category -> Culture",
+                "name": "Moravian Theatre",
+                "full_address": "Horní nám. 22, Olomouc",
+                "latitude": "49.592884",
+                "longitude": "17.24992",
+                "website_link": "http://www.moravskedivadlo.cz/",
+                "preview_image": "",
+                "subcategory_id": [
+                        14
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 28 [/poi/28]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 28,
+                "category_path": "Category -> Culture",
+                "name": "Museum of Modern Art",
+                "full_address": "Denisova 47, 771 11 Olomouc",
+                "latitude": "49.596109",
+                "longitude": "17.256245",
+                "website_link": "http://www.olmuart.cz/test/en/museum-of-modern-art/",
+                "preview_image": "",
+                "subcategory_id": [
+                        14
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 29 [/poi/29]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 29,
+                "category_path": "Category -> Food",
+                "name": "Riegrovka Restaurant",
+                "full_address": "Riegrova 381/22, Olomouc",
+                "latitude": "49.594942",
+                "longitude": "17.24832",
+                "website_link": "https://en.riegrovka.eu/",
+                "preview_image": "",
+                "subcategory_id": [
+                        10
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 30 [/poi/30]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 30,
+                "category_path": "Category -> Food",
+                "name": "BerryBlue Cafe",
+                "full_address": "tř. Svobody 20, Olomouc",
+                "latitude": "49.591524",
+                "longitude": "17.24984",
+                "website_link": "https://www.facebook.com/BerryBlue-Caf%C3%A9-1617524255240269/",
+                "preview_image": "",
+                "subcategory_id": [
+                        10
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 31 [/poi/31]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 31,
+                "category_path": "Category -> Food",
+                "name": "KAFE JAK LUSK",
+                "full_address": "tř. Svobody 646/4, 779 00 Olomouc",
+                "latitude": "49.594876",
+                "longitude": "17.246868",
+                "website_link": "https://www.facebook.com/KAFEJAKLUSK/",
+                "preview_image": "",
+                "subcategory_id": [
+                        10
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 32 [/poi/32]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 32,
+                "category_path": "Category -> Food",
+                "name": "Bistro MY MEAL",
+                "full_address": "tř. Míru 260/32, 779 00 Olomouc",
+                "latitude": "49.596746",
+                "longitude": "17.228703",
+                "website_link": "http://www.mymeal.cz/my-meal-olomouc/bistro",
+                "preview_image": "",
+                "subcategory_id": [
+                        10
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 33 [/poi/33]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 33,
+                "category_path": "Category -> Clubbing",
+                "name": "15 minut - Club & Pub",
+                "full_address": "Komenského 914, Olomouc",
+                "latitude": "49.597746",
+                "longitude": "17.266761",
+                "website_link": "https://www.facebook.com/klub15minut/",
+                "preview_image": "",
+                "subcategory_id": [
+                        11
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 34 [/poi/34]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 34,
+                "category_path": "Category -> Clubbing",
+                "name": "Belmondo Club",
+                "full_address": "Mlýnská 4, Olomouc",
+                "latitude": "49.590881",
+                "longitude": "17.251415",
+                "website_link": "http://www.belmondo.cz/",
+                "preview_image": "",
+                "subcategory_id": [
+                        11
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 35 [/poi/35]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 35,
+                "category_path": "Category -> Groceries",
+                "name": "Albert Šantovka",
+                "full_address": "Polská 1, Olomouc",
+                "latitude": "49.587027",
+                "longitude": "17.257569",
+                "website_link": "https://www.albert.cz/nase-prodejny/hypermarket-olomouc-santovka",
+                "preview_image": "",
+                "subcategory_id": [
+                        8
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 36 [/poi/36]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 36,
+                "category_path": "Category -> Doctors and health care",
+                "name": "MUDr. Jarmila Ševčíková",
+                "full_address": "Šmeralova 10, Olomouc",
+                "latitude": "49.592567",
+                "longitude": "17.266197",
+                "website_link": "http://www.mudrsevcikova.cz/",
+                "preview_image": "",
+                "subcategory_id": [
+                        6
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 37 [/poi/37]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 37,
+                "category_path": "Category -> Doctors and health care",
+                "name": "Hospital",
+                "full_address": "I.P.Pavlova 6, Olomouc",
+                "latitude": "49.583678",
+                "longitude": "17.238222",
+                "website_link": "https://www.fnol.cz/",
+                "preview_image": "",
+                "subcategory_id": [
+                        6
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 38 [/poi/38]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 38,
+                "category_path": "Category -> Shopping",
+                "name": "Šantovka shopping centre",
+                "full_address": "Polská 1, Olomouc",
+                "latitude": "49.587027",
+                "longitude": "17.257569",
+                "website_link": "https://www.galeriesantovka.cz/",
+                "preview_image": "",
+                "subcategory_id": [
+                        9
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 39 [/poi/39]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 39,
+                "category_path": "Category -> Groceries",
+                "name": "Globus",
+                "full_address": "Pražská 39, Olomouc",
+                "latitude": "49.601531",
+                "longitude": "17.22308",
+                "website_link": "https://www.globus.cz/olomouc.html",
+                "preview_image": "",
+                "subcategory_id": [
+                        8
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 40 [/poi/40]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 40,
+                "category_path": "Category -> Groceries",
+                "name": "Kaufland",
+                "full_address": "Štursova 3, Olomouc",
+                "latitude": "49.588445",
+                "longitude": "17.271885",
+                "website_link": "http://www.kaufland.cz/Home/index.jsp?FilialID=5900",
+                "preview_image": "",
+                "subcategory_id": [
+                        8
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 41 [/poi/41]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 41,
+                "category_path": "Category -> Groceries",
+                "name": "Lidl",
+                "full_address": "Lazecká 33, Olomouc",
+                "latitude": "49.60272",
+                "longitude": "17.251554",
+                "website_link": "http://www.lidl.cz/cs/index.htm",
+                "preview_image": "",
+                "subcategory_id": [
+                        8
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 42 [/poi/42]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 42,
+                "category_path": "Category -> Accomodation",
+                "name": "Miss Sophies Olomouc",
+                "full_address": "Denisova 292/33, 779 00 Olomouc",
+                "latitude": "49.595878",
+                "longitude": "17.255284",
+                "website_link": "http://miss-sophies.com/olomouc/",
+                "preview_image": "",
+                "subcategory_id": [
+                        13
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 43 [/poi/43]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 43,
+                "category_path": "Category -> Accomodation",
+                "name": "Long Story Short Hostel & Café",
+                "full_address": "Koželužská 945/31, 779 00 Olomouc",
+                "latitude": "49.597896",
+                "longitude": "17.258258",
+                "website_link": "https://www.facebook.com/LongStoryShortHostel/",
+                "preview_image": "",
+                "subcategory_id": [
+                        13
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 44 [/poi/44]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 44,
+                "category_path": "Category -> Travel",
+                "name": "Main Train Station",
+                "full_address": "Jeremenkova 103/23",
+                "latitude": "49.592897",
+                "longitude": "17.277857",
+                "website_link": "http://jizdnirady.idnes.cz/vlakyautobusymhdvse/spojeni/",
+                "preview_image": "",
+                "subcategory_id": [
+                        15
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 45 [/poi/45]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 45,
+                "category_path": "Category -> Travel",
+                "name": "Main Bus Station",
+                "full_address": "Sladkovského 142/37, 779 00 Olomouc",
+                "latitude": "49.587707",
+                "longitude": "17.285392",
+                "website_link": "http://jizdnirady.idnes.cz/vlakyautobusymhdvse/spojeni/",
+                "preview_image": "",
+                "subcategory_id": [
+                        15
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 46 [/poi/46]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 46,
+                "category_path": "Category -> Travel",
+                "name": "Pub Transoprtation Office",
+                "full_address": "Legionářská 746/1, 779 00 Olomouc",
+                "latitude": "49.595952",
+                "longitude": "17.246945",
+                "website_link": "https://www.dpmo.cz/en/",
+                "preview_image": "",
+                "subcategory_id": [
+                        15
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 47 [/poi/47]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 47,
+                "category_path": "Category -> Pub & Bars",
+                "name": "The BLACK STUFF Irish Pub & Whisky Bar",
+                "full_address": "1. máje 807/19, 779 00 Olomouc",
+                "latitude": "49.597101",
+                "longitude": "17.261401",
+                "website_link": "http://www.blackstuff.cz/",
+                "preview_image": "",
+                "subcategory_id": [
+                        16
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 48 [/poi/48]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 48,
+                "category_path": "Category -> Pub & Bars",
+                "name": "VERTIGO",
+                "full_address": "Univerzitní 227/6, 779 00 Olomouc",
+                "latitude": "49.5953",
+                "longitude": "17.255214",
+                "website_link": "http://www.klubvertigo.cz/napojak.html",
+                "preview_image": "",
+                "subcategory_id": [
+                        16
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 49 [/poi/49]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 49,
+                "category_path": "Category -> Pub & Bars",
+                "name": "EXCELENT URBAN PUB DOGA",
+                "full_address": "Šmeralova 1116/10, 779 00 Olomouc",
+                "latitude": "49.592567",
+                "longitude": "17.266197",
+                "website_link": "http://www.pivnicedoga.cz/en/5576-2/",
+                "preview_image": "",
+                "subcategory_id": [
+                        16
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 50 [/poi/50]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 50,
+                "category_path": "Category -> Pub & Bars",
+                "name": "LOCAL LOKAL Industy PUB",
+                "full_address": "Zeyerova 809/17, Hodolany, 779 00 Olomouc",
+                "latitude": "49.594013",
+                "longitude": "17.273441",
+                "website_link": "https://www.facebook.com/LOCAL-LOKAL-industry-pub-298386737227462/",
+                "preview_image": "",
+                "subcategory_id": [
+                        16
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 51 [/poi/51]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 51,
+                "category_path": "Category -> Vodafone shops",
+                "name": "Vodafone Šantovka",
+                "full_address": "Polská 1, OC Šantovka, 779 00 Olomouc",
+                "latitude": "49.587027",
+                "longitude": "17.257569",
+                "website_link": "https://www.vodafone.cz/en/stores/store-detail/olomouc-oc-santovka/",
+                "preview_image": "",
+                "subcategory_id": [
+                        17
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }
+
+
+## POI Detail 52 [/poi/52]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 52,
+                "category_path": "Category -> Vodafone shops",
+                "name": "Vodafone Globus",
+                "full_address": "Pražská 248/39, 779 00 Olomouc - Řepčín",
+                "latitude": "49.601531",
+                "longitude": "17.22308",
+                "website_link": "https://www.vodafone.cz/en/stores/store-detail/olomouc-globus/business-poradce/",
+                "preview_image": "",
+                "subcategory_id": [
+                        17
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        },
+                        {
+                                "content_title": "Content block title",
+                                "content_body": "Opening hours 24/7"
+                        }
+                ]
+        }

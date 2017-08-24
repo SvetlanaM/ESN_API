@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://esn.org/
+HOST: http://app2.esn-cz.cz/api/
 
 # ESN API Documentation
 ESN API documentation for ESN project. This project is divided
@@ -144,7 +144,7 @@ from the server side.
             }
         ]
 
-## Subcategory Collection [/subcategories{?category}]
+## Subcategory Collection for Uni [/subcategories?category=1]
 ---
 Represents subcategory details. One main category contains
 more subcategories, where one subcategory can be in more
@@ -176,10 +176,6 @@ grouped on the map.
     + Headers
 
             Authorization: JWT ABC123
-
-
-+ Parameters
-    + category (Number)... id of the selected category.
 
 
 + Response 200 (application/json)
@@ -229,7 +225,47 @@ grouped on the map.
                   "icon":"https://www.esn-cz.cz/esnczapp/icons/011-sleeping-bed-silhouette.svg",
                   "order":5,
                   "pois" : [19, 20, 21, 22, 23, 24]
-                },
+                }
+        ]
+
+
+## Subcategory Collection for Services [/subcategories?category=2]
+---
+Represents subcategory details. One main category contains
+more subcategories, where one subcategory can be in more
+main categories.
+
+---
+
+**Subcategory attributes:**
+
+- id `(Number)` : Unique Identifier.
+- parent_category `(Number)` : parent super category. server side
+- name `(String)` : Subcategory Name.
+- color `(String)` : Subcategory Color.
+- icon `(URL)` : Subcategory Icon.
+- order `(Number)` : listing priority. lower = more important. server side
+
+
+### List all subcategories [GET]
+
+Subcategories and categories are ordered based on the order
+from the server side.
+
+We use subcategory color and icon. When there is no icon and
+color for the subcategory, you can use category color and icon.
+Also you can use category color and icon when data are
+grouped on the map.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
+
++ Response 200 (application/json)
+
+        [
                 {
                   "id":16,
                   "parent_category":2,
@@ -292,7 +328,46 @@ grouped on the map.
                   "icon":"https://www.esn-cz.cz/esnczapp/icons/004-theatre.svg",
                   "order":7,
                   "pois" : [27, 28]
-                },
+                }        
+        ]
+
+## Subcategory Collection for Discounts [/subcategories?category=3]
+---
+Represents subcategory details. One main category contains
+more subcategories, where one subcategory can be in more
+main categories.
+
+---
+
+**Subcategory attributes:**
+
+- id `(Number)` : Unique Identifier.
+- parent_category `(Number)` : parent super category. server side
+- name `(String)` : Subcategory Name.
+- color `(String)` : Subcategory Color.
+- icon `(URL)` : Subcategory Icon.
+- order `(Number)` : listing priority. lower = more important. server side
+
+
+### List all subcategories [GET]
+
+Subcategories and categories are ordered based on the order
+from the server side.
+
+We use subcategory color and icon. When there is no icon and
+color for the subcategory, you can use category color and icon.
+Also you can use category color and icon when data are
+grouped on the map.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
+
++ Response 200 (application/json)
+
+        [
                 {
                   "id":11,
                   "parent_category":3,
@@ -309,7 +384,7 @@ grouped on the map.
                   "color":"#7ac143",
                   "icon":"https://www.esn-cz.cz/esnczapp/icons/001-food.svg",
                   "order":2,
-                  "pois" : [1, 2, 3]
+                  "pois" : [29, 30, 31, 32]
                 },
                 {
                   "id":12,
@@ -328,7 +403,46 @@ grouped on the map.
                   "icon":"https://www.esn-cz.cz/esnczapp/icons/011-sleeping-bed-silhouette.svg",
                   "order":4,
                   "pois" : [42, 43]
-                },
+                }        
+        ]
+
+## Subcategory Collection for Vodafone [/subcategories?category=4]
+---
+Represents subcategory details. One main category contains
+more subcategories, where one subcategory can be in more
+main categories.
+
+---
+
+**Subcategory attributes:**
+
+- id `(Number)` : Unique Identifier.
+- parent_category `(Number)` : parent super category. server side
+- name `(String)` : Subcategory Name.
+- color `(String)` : Subcategory Color.
+- icon `(URL)` : Subcategory Icon.
+- order `(Number)` : listing priority. lower = more important. server side
+
+
+### List all subcategories [GET]
+
+Subcategories and categories are ordered based on the order
+from the server side.
+
+We use subcategory color and icon. When there is no icon and
+color for the subcategory, you can use category color and icon.
+Also you can use category color and icon when data are
+grouped on the map.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
+
++ Response 200 (application/json)
+
+        [
                 {
                   "id":17,
                   "parent_category":4,
@@ -345,10 +459,9 @@ grouped on the map.
                   "color":"#f47b20",
                   "icon":"https://www.esn-cz.cz/esnczapp/icons/money-on-smartphone.svg",
                   "order":2,
-                  "pois" : [0]
+                  "pois" : [53, 54, 55, 56]
                 }
         ]
-
 
 ## Update Collection [/update_from={datetime}]
 ---
@@ -556,25 +669,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 1,
-                "category_path": "Category -> Faculties",
                 "name": "Sts Cyril and Methodius Faculty of Theology",
                 "full_address": "Univerzitní 244/22, Olomouc",
                 "latitude": "49.59466",
                 "longitude": "17.254988",
                 "website_link": "https://www.cmtf.upol.cz/en/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         4
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_cmtf_barva.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_cmtf_barva.png",
                                 "order": 2
                         }
                 ],
@@ -584,8 +696,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -628,25 +744,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 2,
-                "category_path": "Category -> Faculties",
                 "name": "Faculty of Medicine and Dentistry",
                 "full_address": "Hněvotínská 3, Olomouc",
                 "latitude": "49.58628",
                 "longitude": "17.236611",
                 "website_link": "http://old.lf.upol.cz/en/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         4
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_lf_barva.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_lf_barva.png",
                                 "order": 2
                         }
                 ],
@@ -656,8 +771,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -700,25 +819,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 3,
-                "category_path": "Category -> Faculties",
                 "name": "Faculty of Arts",
                 "full_address": "Křížkovského 511/10, Olomouc",
                 "latitude": "49.594298",
                 "longitude": "17.259804",
                 "website_link": "http://old.ff.upol.cz/en/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         4
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_ff_barva.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_ff_barva.png",
                                 "order": 2
                         }
                 ],
@@ -728,8 +846,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -772,25 +894,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 4,
-                "category_path": "Category -> Faculties",
                 "name": "Faculty of Science",
                 "full_address": "tř. 17. listopadu 1192/12, Olomouc",
                 "latitude": "49.592283",
                 "longitude": "17.263317",
                 "website_link": "http://old.prf.upol.cz/en/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         4
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_prf_barva.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_prf_barva.png",
                                 "order": 2
                         }
                 ],
@@ -800,8 +921,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -844,25 +969,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 5,
-                "category_path": "Category -> Faculties",
                 "name": "Faculty of Education",
                 "full_address": "Žižkovo náměstí 5, Olomouc",
                 "latitude": "49.595709",
                 "longitude": "17.264651",
                 "website_link": "http://old.pdf.upol.cz/en/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         4
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_pdf_barva.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_pdf_barva.png",
                                 "order": 2
                         }
                 ],
@@ -872,8 +996,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -916,25 +1044,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 6,
-                "category_path": "Category -> Faculties",
                 "name": "Faculty of Physical Culture",
                 "full_address": "tř. Míru 117, Olomouc",
                 "latitude": "49.594452",
                 "longitude": "17.213481",
                 "website_link": "https://ftk.upol.cz/en/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         4
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_ftk_barva.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_ftk_barva.png",
                                 "order": 2
                         }
                 ],
@@ -944,8 +1071,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -988,25 +1119,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 7,
-                "category_path": "Category -> Faculties",
                 "name": "Faculty of Law",
                 "full_address": "tř. 17. listopadu 8, Olomouc",
                 "latitude": "49.590794",
                 "longitude": "17.262653",
                 "website_link": "http://old.pf.upol.cz/en/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         4
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_pf_barva.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_pf_barva.png",
                                 "order": 2
                         }
                 ],
@@ -1016,8 +1146,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -1060,25 +1194,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 8,
-                "category_path": "Category -> Faculties",
                 "name": "Faculty of Health Sciences",
                 "full_address": "Hněvotínská 5, Olomouc",
                 "latitude": "49.585948",
                 "longitude": "17.234929",
                 "website_link": "http://old.fzv.upol.cz/en/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         4
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_fzv_barva.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_fzv_barva.png",
                                 "order": 2
                         }
                 ],
@@ -1088,8 +1221,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -1132,25 +1269,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 9,
-                "category_path": "Category -> University",
                 "name": "International Relations Office",
                 "full_address": "Křížkovského 8, Olomouc",
                 "latitude": "49.595124",
                 "longitude": "17.259223",
                 "website_link": "https://www.upol.cz/en/students/exchange-students/international-offices/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         1
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_up_barva.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_up_barva.png",
                                 "order": 2
                         }
                 ],
@@ -1160,8 +1296,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -1204,25 +1344,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 10,
-                "category_path": "Category -> University",
                 "name": "Library Zbrojnice",
                 "full_address": "Biskupské nám. 842/1, Olomouc",
                 "latitude": "49.595704",
                 "longitude": "17.260127",
                 "website_link": "https://www.knihovna.upol.cz/en/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         1
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_up_barva.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_up_barva.png",
                                 "order": 2
                         }
                 ],
@@ -1232,8 +1371,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -1276,25 +1419,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 11,
-                "category_path": "Category -> University",
                 "name": "Academic Sport Centre",
                 "full_address": "U Sportovní haly 2a, Olomouc",
                 "latitude": "49.603545",
                 "longitude": "17.250093",
                 "website_link": "https://ascup.upol.cz/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         1
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_up_barva.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_up_barva.png",
                                 "order": 2
                         }
                 ],
@@ -1304,8 +1446,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -1348,25 +1494,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 12,
-                "category_path": "Category -> University",
                 "name": "Computer Centre Zbrojnice",
                 "full_address": "Biskupské nám. 842/1, Olomouc",
                 "latitude": "49.595704",
                 "longitude": "17.260127",
                 "website_link": "https://cvt.upol.cz/en/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         1
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_up_barva.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_up_barva.png",
                                 "order": 2
                         }
                 ],
@@ -1376,8 +1521,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -1420,25 +1569,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 13,
-                "category_path": "Category -> University",
                 "name": "Centre for Students with Special Needs",
                 "full_address": "Žižkovo nám. 5, Olomouc",
                 "latitude": "49.595709",
                 "longitude": "17.264651",
                 "website_link": "http://cps.upol.cz/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         1
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_up_barva.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_up_barva.png",
                                 "order": 2
                         }
                 ],
@@ -1448,8 +1596,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -1492,25 +1644,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 14,
-                "category_path": "Category -> Canteens",
                 "name": "Canteen 17. listopadu",
                 "full_address": "tř. 17. listopadu 54, Olomouc",
                 "latitude": "49.594571",
                 "longitude": "17.265361",
                 "website_link": "http://old.skm.upol.cz/en/dining-halls/dining-hall-17-listopadu/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         5
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 2
                         }
                 ],
@@ -1520,8 +1671,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -1564,25 +1719,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 15,
-                "category_path": "Category -> Canteens",
                 "name": "Canteen Šmeralova",
                 "full_address": "Šmeralova 6, Olomouc",
                 "latitude": "49.594181",
                 "longitude": "17.266427",
                 "website_link": "http://old.skm.upol.cz/en/dining-halls/dining-hall-smeralova/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         5
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 2
                         }
                 ],
@@ -1592,8 +1746,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -1636,25 +1794,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 16,
-                "category_path": "Category -> Canteens",
                 "name": "Canteen Křížkovského",
                 "full_address": "Křížkovského 8, Olomouc",
                 "latitude": "49.595124",
                 "longitude": "17.259223",
                 "website_link": "http://old.skm.upol.cz/en/dining-halls/dining-hall-krizkovskeho/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         5
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 2
                         }
                 ],
@@ -1664,8 +1821,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -1708,25 +1869,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 17,
-                "category_path": "Category -> Canteens",
                 "name": "Canteen Neředín",
                 "full_address": "tř. Míru 115, Olomouc",
                 "latitude": "49.594447",
                 "longitude": "17.213471",
                 "website_link": "http://old.skm.upol.cz/en/dining-halls/dining-hall-neredin/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         5
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 2
                         }
                 ],
@@ -1736,8 +1896,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -1780,25 +1944,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 18,
-                "category_path": "Category -> Canteens",
                 "name": "Canteen Holice",
                 "full_address": "Šlechtitelů 11, Olomouc",
                 "latitude": "49.575285",
                 "longitude": "17.279329",
                 "website_link": "http://old.skm.upol.cz/en/dining-halls/dining-hall-holice/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         5
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 2
                         }
                 ],
@@ -1808,8 +1971,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -1852,25 +2019,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 19,
-                "category_path": "Category -> Dormitories",
                 "name": "17. listopadu Dormitory",
                 "full_address": "tř. 17. listopadu 54, Olomouc",
                 "latitude": "49.594571",
                 "longitude": "17.265361",
                 "website_link": "http://old.skm.upol.cz/en/dormitories/dormitory-17-listopadu/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         3
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 2
                         }
                 ],
@@ -1880,8 +2046,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -1924,25 +2094,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 20,
-                "category_path": "Category -> Dormitories",
                 "name": "Bedřicha Václavka Dormitory",
                 "full_address": "Šmeralova 8, Olomouc",
                 "latitude": "49.593191",
                 "longitude": "17.266888",
                 "website_link": "http://old.skm.upol.cz/en/dormitories/dormitory-bedricha-vaclavka/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         3
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 2
                         }
                 ],
@@ -1952,8 +2121,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -1996,25 +2169,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 21,
-                "category_path": "Category -> Dormitories",
                 "name": "Evžena Rošického Dormitory",
                 "full_address": "U Sportovní haly 4, Olomouc",
                 "latitude": "49.602606",
                 "longitude": "17.248618",
                 "website_link": "http://old.skm.upol.cz/en/dormitories/dormitory-evzena-rosickeho/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         3
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 2
                         }
                 ],
@@ -2024,8 +2196,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -2068,25 +2244,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 22,
-                "category_path": "Category -> Dormitories",
                 "name": "Generála Svobody Dormitory",
                 "full_address": "Šmeralova 12, Olomouc",
                 "latitude": "49.591787",
                 "longitude": "17.265004",
                 "website_link": "http://old.skm.upol.cz/en/dormitories/dormitory-generala-svobody/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         3
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 2
                         }
                 ],
@@ -2096,8 +2271,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -2140,25 +2319,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 23,
-                "category_path": "Category -> Dormitories",
                 "name": "J. L. Fischera Dormitory",
                 "full_address": "Šmeralova 10, Olomouc",
                 "latitude": "49.592567",
                 "longitude": "17.266197",
                 "website_link": "http://old.skm.upol.cz/en/dormitories/dormitory-j-l-fischera/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         3
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 2
                         }
                 ],
@@ -2168,8 +2346,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -2212,25 +2394,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 24,
-                "category_path": "Category -> Dormitories",
                 "name": "Neředín Dormitory",
                 "full_address": "U Letiště 786, Olomouc",
                 "latitude": "49.594235",
                 "longitude": "17.214961",
                 "website_link": "http://old.skm.upol.cz/en/dormitories/dormitory-neredin-ii/",
-                "preview_image": "",
+                "preview_image": "http://new.uss.upol.cz/wp-content/uploads/2014/10/UpolLOgo.png",
                 "subcategory_id": [
                         3
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://vizual.upol.cz/soubory_v2/logotypy/logo_skm_modra.png",
                                 "order": 2
                         }
                 ],
@@ -2240,8 +2421,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -2284,7 +2469,6 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 25,
-                "category_path": "Category -> Erasmus Student Network",
                 "name": "ESN UP Olomouc Office",
                 "full_address": "tř. Svobody 26, Olomouc",
                 "latitude": "49.590329",
@@ -2297,12 +2481,12 @@ This call also contains information for the POI detail section.
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://esn.upol.cz/sites/up.esn-cz.cz/files/logo-01.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://esn.upol.cz/sites/up.esn-cz.cz/files/logo-01.png",
                                 "order": 2
                         }
                 ],
@@ -2312,8 +2496,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -2356,7 +2544,6 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 26,
-                "category_path": "Category -> Entertainment",
                 "name": "Premiere Cinemas Šantovka",
                 "full_address": "Polská 1, Olomouc",
                 "latitude": "49.587027",
@@ -2369,12 +2556,12 @@ This call also contains information for the POI detail section.
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://cdr.cz/sites/default/files/styles/custom/public/premierecinemas_logo_big.jpg?itok=-myxC8wp",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://cdr.cz/sites/default/files/styles/custom/public/premierecinemas_logo_big.jpg?itok=-myxC8wp",
                                 "order": 2
                         }
                 ],
@@ -2384,8 +2571,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -2428,7 +2619,6 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 27,
-                "category_path": "Category -> Culture",
                 "name": "Moravian Theatre",
                 "full_address": "Horní nám. 22, Olomouc",
                 "latitude": "49.592884",
@@ -2441,12 +2631,12 @@ This call also contains information for the POI detail section.
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://www.moravskedivadlo.cz/images/mdo_logo.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://www.moravskedivadlo.cz/images/mdo_logo.png",
                                 "order": 2
                         }
                 ],
@@ -2456,8 +2646,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -2500,7 +2694,6 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 28,
-                "category_path": "Category -> Culture",
                 "name": "Museum of Modern Art",
                 "full_address": "Denisova 47, 771 11 Olomouc",
                 "latitude": "49.596109",
@@ -2513,12 +2706,12 @@ This call also contains information for the POI detail section.
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://www.olmuart.cz/gfx/logo2.png",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://www.olmuart.cz/gfx/logo2.png",
                                 "order": 2
                         }
                 ],
@@ -2528,8 +2721,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -2572,25 +2769,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 29,
-                "category_path": "Category -> Food",
                 "name": "Riegrovka Restaurant",
                 "full_address": "Riegrova 381/22, Olomouc",
                 "latitude": "49.594942",
                 "longitude": "17.24832",
                 "website_link": "https://en.riegrovka.eu/",
-                "preview_image": "",
+                "preview_image": "http://www.pivovary.info/prehled/riegrovka/riegrovka_logo.jpg",
                 "subcategory_id": [
                         10
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://www.pivovary.info/prehled/riegrovka/riegrovka_logo.jpg",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://www.pivovary.info/prehled/riegrovka/riegrovka_logo.jpg",
                                 "order": 2
                         }
                 ],
@@ -2600,8 +2796,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -2644,25 +2844,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 30,
-                "category_path": "Category -> Food",
                 "name": "BerryBlue Cafe",
                 "full_address": "tř. Svobody 20, Olomouc",
                 "latitude": "49.591524",
                 "longitude": "17.24984",
                 "website_link": "https://www.facebook.com/BerryBlue-Caf%C3%A9-1617524255240269/",
-                "preview_image": "",
+                "preview_image": "http://www.ranapece.cz/olomouc1/wp-content/uploads/sites/16/BerryBlue.jpg",
                 "subcategory_id": [
                         10
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "https://esncard.org/sites/default/files/styles/discount-pictures-xl/public/15109562_1740657402926953_3900417282649590144_n.jpg?itok=woAE9YQk",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "https://esncard.org/sites/default/files/styles/discount-pictures-xl/public/15109562_1740657402926953_3900417282649590144_n.jpg?itok=woAE9YQk",
                                 "order": 2
                         }
                 ],
@@ -2672,8 +2871,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -2716,25 +2919,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 31,
-                "category_path": "Category -> Food",
                 "name": "KAFE JAK LUSK",
                 "full_address": "tř. Svobody 646/4, 779 00 Olomouc",
                 "latitude": "49.594876",
                 "longitude": "17.246868",
                 "website_link": "https://www.facebook.com/KAFEJAKLUSK/",
-                "preview_image": "",
+                "preview_image": "http://www.kavovelisty.cz/images/articles-detail/detail/image-1459864112.88910.jpg",
                 "subcategory_id": [
                         10
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "https://www.restu.cz/ir/restaurant/636/6362eaf33a8bf621664fec29445d0bf6.jpg",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "https://www.restu.cz/ir/restaurant/636/6362eaf33a8bf621664fec29445d0bf6.jpg",
                                 "order": 2
                         }
                 ],
@@ -2744,8 +2946,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -2788,25 +2994,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 32,
-                "category_path": "Category -> Food",
                 "name": "Bistro MY MEAL",
                 "full_address": "tř. Míru 260/32, 779 00 Olomouc",
                 "latitude": "49.596746",
                 "longitude": "17.228703",
                 "website_link": "http://www.mymeal.cz/my-meal-olomouc/bistro",
-                "preview_image": "",
+                "preview_image": "http://www.mymeal.cz/resize/e/800/800/files/my-meal-delivery-logo-(3).jpg",
                 "subcategory_id": [
                         10
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://www.olomouc.cz/images/clanky/1447945515_w250_zoom.jpg",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://www.olomouc.cz/images/clanky/1447945515_w250_zoom.jpg",
                                 "order": 2
                         }
                 ],
@@ -2816,8 +3021,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -2860,25 +3069,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 33,
-                "category_path": "Category -> Clubbing",
                 "name": "15 minut - Club & Pub",
                 "full_address": "Komenského 914, Olomouc",
                 "latitude": "49.597746",
                 "longitude": "17.266761",
                 "website_link": "https://www.facebook.com/klub15minut/",
-                "preview_image": "",
+                "preview_image": "http://esn.upol.cz/sites/up.esn-cz.cz/files/partners/images/15minut.jpg",
                 "subcategory_id": [
                         11
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://img18.rajce.idnes.cz/d1801/13/13260/13260628_186f050ac56deb0f3aa647e7875b9f30/images/club.jpg",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://img18.rajce.idnes.cz/d1801/13/13260/13260628_186f050ac56deb0f3aa647e7875b9f30/images/club.jpg",
                                 "order": 2
                         }
                 ],
@@ -2888,8 +3096,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -2932,25 +3144,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 34,
-                "category_path": "Category -> Clubbing",
                 "name": "Belmondo Club",
                 "full_address": "Mlýnská 4, Olomouc",
                 "latitude": "49.590881",
                 "longitude": "17.251415",
                 "website_link": "http://www.belmondo.cz/",
-                "preview_image": "",
+                "preview_image": "http://www.partyolomouc.cz/wp-content/uploads/1385835_622461094464520_1249875750_n.jpg",
                 "subcategory_id": [
                         11
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://lightbusters.cz/portfolio/belmondo/photo4.jpg",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://lightbusters.cz/portfolio/belmondo/photo4.jpg",
                                 "order": 2
                         }
                 ],
@@ -2960,8 +3171,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -3004,25 +3219,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 35,
-                "category_path": "Category -> Groceries",
                 "name": "Albert Šantovka",
                 "full_address": "Polská 1, Olomouc",
                 "latitude": "49.587027",
                 "longitude": "17.257569",
                 "website_link": "https://www.albert.cz/nase-prodejny/hypermarket-olomouc-santovka",
-                "preview_image": "",
+                "preview_image": "https://www.albert.cz/imgm/YTI4NzQyfGExMTcwMzh8YTU0ODYzfGExMTE4NTFoYfWk/-a28734.jpg",
                 "subcategory_id": [
                         8
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://www.galeriesantovka.cz/images/logos/4097-3-albert-hypermarket.jpg",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://www.galeriesantovka.cz/images/logos/4097-3-albert-hypermarket.jpg",
                                 "order": 2
                         }
                 ],
@@ -3032,8 +3246,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -3076,7 +3294,6 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 36,
-                "category_path": "Category -> Doctors and health care",
                 "name": "MUDr. Jarmila Ševčíková",
                 "full_address": "Šmeralova 10, Olomouc",
                 "latitude": "49.592567",
@@ -3104,8 +3321,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -3148,7 +3369,6 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 37,
-                "category_path": "Category -> Doctors and health care",
                 "name": "Hospital",
                 "full_address": "I.P.Pavlova 6, Olomouc",
                 "latitude": "49.583678",
@@ -3176,8 +3396,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -3220,25 +3444,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 38,
-                "category_path": "Category -> Shopping",
                 "name": "Šantovka shopping centre",
                 "full_address": "Polská 1, Olomouc",
                 "latitude": "49.587027",
                 "longitude": "17.257569",
                 "website_link": "https://www.galeriesantovka.cz/",
-                "preview_image": "",
+                "preview_image": "http://www.santovkaolomouc.cz/foto/nove-logo-001.jpg",
                 "subcategory_id": [
                         9
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "https://img.firmy.cz/premise/full/201310/3116/d5/527283c2d54efab8e99a0600?v=1",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "https://img.firmy.cz/premise/full/201310/3116/d5/527283c2d54efab8e99a0600?v=1",
                                 "order": 2
                         }
                 ],
@@ -3248,8 +3471,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -3292,25 +3519,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 39,
-                "category_path": "Category -> Groceries",
                 "name": "Globus",
                 "full_address": "Pražská 39, Olomouc",
                 "latitude": "49.601531",
                 "longitude": "17.22308",
                 "website_link": "https://www.globus.cz/olomouc.html",
-                "preview_image": "",
+                "preview_image": "http://www.olomouc.charita.cz/res/archive/004/000740_05_004463.png?seek=1466586553",
                 "subcategory_id": [
                         8
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "https://img.firmy.cz/premise/full/201310/2916/e7/526fe24de7a83b9720de0300?v=1",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "https://img.firmy.cz/premise/full/201310/2916/e7/526fe24de7a83b9720de0300?v=1",
                                 "order": 2
                         }
                 ],
@@ -3320,8 +3546,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -3364,25 +3594,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 40,
-                "category_path": "Category -> Groceries",
                 "name": "Kaufland",
                 "full_address": "Štursova 3, Olomouc",
                 "latitude": "49.588445",
                 "longitude": "17.271885",
                 "website_link": "http://www.kaufland.cz/Home/index.jsp?FilialID=5900",
-                "preview_image": "",
+                "preview_image": "https://vignette3.wikia.nocookie.net/logopedia/images/1/1d/Kaufland2017.png/revision/latest?cb=20170418090709",
                 "subcategory_id": [
                         8
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://www.olomouckadrbna.cz/files/drbna/images/page/1000x1000-1493728091-kaufland-v-olomouci.jpg",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://www.olomouckadrbna.cz/files/drbna/images/page/1000x1000-1493728091-kaufland-v-olomouci.jpg",
                                 "order": 2
                         }
                 ],
@@ -3392,8 +3621,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -3436,25 +3669,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 41,
-                "category_path": "Category -> Groceries",
                 "name": "Lidl",
                 "full_address": "Lazecká 33, Olomouc",
                 "latitude": "49.60272",
                 "longitude": "17.251554",
                 "website_link": "http://www.lidl.cz/cs/index.htm",
-                "preview_image": "",
+                "preview_image": "http://www.logoeps.com/wp-content/uploads/2013/03/lidl-vector-logo.png",
                 "subcategory_id": [
                         8
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "https://img.firmy.cz/premise/full/201308/1907/6a/5211c9f06a2a17b85bb20300?v=1",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "https://img.firmy.cz/premise/full/201308/1907/6a/5211c9f06a2a17b85bb20300?v=1",
                                 "order": 2
                         }
                 ],
@@ -3464,8 +3696,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -3508,25 +3744,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 42,
-                "category_path": "Category -> Accomodation",
                 "name": "Miss Sophies Olomouc",
                 "full_address": "Denisova 292/33, 779 00 Olomouc",
                 "latitude": "49.595878",
                 "longitude": "17.255284",
                 "website_link": "http://miss-sophies.com/olomouc/",
-                "preview_image": "",
+                "preview_image": "https://pbs.twimg.com/profile_images/544396870890434560/y08VKO0O.jpeg",
                 "subcategory_id": [
                         13
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "https://exp.cdn-hotels.com/hotels/19000000/18060000/18055300/18055217/04762d8c_z.jpg",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "https://exp.cdn-hotels.com/hotels/19000000/18060000/18055300/18055217/04762d8c_z.jpg",
                                 "order": 2
                         }
                 ],
@@ -3536,8 +3771,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -3580,25 +3819,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 43,
-                "category_path": "Category -> Accomodation",
                 "name": "Long Story Short Hostel & Café",
                 "full_address": "Koželužská 945/31, 779 00 Olomouc",
                 "latitude": "49.597896",
                 "longitude": "17.258258",
                 "website_link": "https://www.facebook.com/LongStoryShortHostel/",
-                "preview_image": "",
+                "preview_image": "https://scontent.fprg1-1.fna.fbcdn.net/v/t1.0-9/17021677_1563411540353714_5433174086600267482_n.png?oh=bd3f1a8b833a0bfb370a2da20eb05578&oe=59E3F7A2",
                 "subcategory_id": [
                         13
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "https://scontent.fprg1-1.fna.fbcdn.net/v/t1.0-9/17021677_1563411540353714_5433174086600267482_n.png?oh=bd3f1a8b833a0bfb370a2da20eb05578&oe=59E3F7A2",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "https://scontent.fprg1-1.fna.fbcdn.net/v/t1.0-9/17021677_1563411540353714_5433174086600267482_n.png?oh=bd3f1a8b833a0bfb370a2da20eb05578&oe=59E3F7A2",
                                 "order": 2
                         }
                 ],
@@ -3608,8 +3846,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -3652,25 +3894,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 44,
-                "category_path": "Category -> Travel",
                 "name": "Main Train Station",
                 "full_address": "Jeremenkova 103/23",
                 "latitude": "49.592897",
                 "longitude": "17.277857",
                 "website_link": "http://jizdnirady.idnes.cz/vlakyautobusymhdvse/spojeni/",
-                "preview_image": "",
+                "preview_image": "http://www.metropole-olomouc.cz/galerie_aktuality/img_1522.jpg",
                 "subcategory_id": [
                         15
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://www.mhdinfo.cz/image/morava/olomouc/P7070135.JPG",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://www.mhdinfo.cz/image/morava/olomouc/P7070135.JPG",
                                 "order": 2
                         }
                 ],
@@ -3680,8 +3921,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -3724,7 +3969,6 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 45,
-                "category_path": "Category -> Travel",
                 "name": "Main Bus Station",
                 "full_address": "Sladkovského 142/37, 779 00 Olomouc",
                 "latitude": "49.587707",
@@ -3737,12 +3981,12 @@ This call also contains information for the POI detail section.
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://www.ledmultimedia.cz/examples/1785514292.jpg",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://www.ledmultimedia.cz/examples/1785514292.jpg",
                                 "order": 2
                         }
                 ],
@@ -3752,8 +3996,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -3796,25 +4044,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 46,
-                "category_path": "Category -> Travel",
-                "name": "Pub Transoprtation Office",
+                "name": "Pub Transportation Office",
                 "full_address": "Legionářská 746/1, 779 00 Olomouc",
                 "latitude": "49.595952",
                 "longitude": "17.246945",
                 "website_link": "https://www.dpmo.cz/en/",
-                "preview_image": "",
+                "preview_image": "http://sporvognsrejser.dk/fotos/logoer/dopravni_podnik_mesta_olomouce_dpmo.png",
                 "subcategory_id": [
                         15
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "https://dm.aliveplatform.com/public/cz/provider/510/photo_318.large.2261.jpeg",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "https://dm.aliveplatform.com/public/cz/provider/510/photo_318.large.2261.jpeg",
                                 "order": 2
                         }
                 ],
@@ -3824,8 +4071,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -3868,25 +4119,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 47,
-                "category_path": "Category -> Pub & Bars",
                 "name": "The BLACK STUFF Irish Pub & Whisky Bar",
                 "full_address": "1. máje 807/19, 779 00 Olomouc",
                 "latitude": "49.597101",
                 "longitude": "17.261401",
                 "website_link": "http://www.blackstuff.cz/",
-                "preview_image": "",
+                "preview_image": "https://pbs.twimg.com/profile_images/1776456149/BS_logo_400x400.jpg",
                 "subcategory_id": [
                         16
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://www.snobka.cz/wp-content/uploads/2013/10/DSC_0030.jpg",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://www.snobka.cz/wp-content/uploads/2013/10/DSC_0030.jpg",
                                 "order": 2
                         }
                 ],
@@ -3896,8 +4146,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -3940,25 +4194,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 48,
-                "category_path": "Category -> Pub & Bars",
                 "name": "VERTIGO",
                 "full_address": "Univerzitní 227/6, 779 00 Olomouc",
                 "latitude": "49.5953",
                 "longitude": "17.255214",
                 "website_link": "http://www.klubvertigo.cz/napojak.html",
-                "preview_image": "",
+                "preview_image": "http://www.pivochomout.cz/wp-content/uploads/Logo-Vertigo.jpg",
                 "subcategory_id": [
                         16
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://www.helenavkrabici.cz/wp-content/uploads/Vertigo_2-600x450.jpg",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://www.helenavkrabici.cz/wp-content/uploads/Vertigo_2-600x450.jpg",
                                 "order": 2
                         }
                 ],
@@ -3968,8 +4221,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -4012,25 +4269,24 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 49,
-                "category_path": "Category -> Pub & Bars",
                 "name": "EXCELENT URBAN PUB DOGA",
                 "full_address": "Šmeralova 1116/10, 779 00 Olomouc",
                 "latitude": "49.592567",
                 "longitude": "17.266197",
                 "website_link": "http://www.pivnicedoga.cz/en/5576-2/",
-                "preview_image": "",
+                "preview_image": "http://www.pivnicedoga.cz/wp-content/uploads/2017/02/gam-excelent_logo.png",
                 "subcategory_id": [
                         16
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "http://www.olomouc.cz/images/katalog-fotogalerie/1963_1413811053_3.jpg",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "http://www.olomouc.cz/images/katalog-fotogalerie/1963_1413811053_3.jpg",
                                 "order": 2
                         }
                 ],
@@ -4040,8 +4296,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -4084,7 +4344,6 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 50,
-                "category_path": "Category -> Pub & Bars",
                 "name": "LOCAL LOKAL Industy PUB",
                 "full_address": "Zeyerova 809/17, Hodolany, 779 00 Olomouc",
                 "latitude": "49.594013",
@@ -4112,8 +4371,12 @@ This call also contains information for the POI detail section.
                                 "content_body": "Opening hours 24/7"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
@@ -4156,36 +4419,39 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 51,
-                "category_path": "Category -> Vodafone shops",
                 "name": "Vodafone Šantovka",
                 "full_address": "Polská 1, OC Šantovka, 779 00 Olomouc",
                 "latitude": "49.587027",
                 "longitude": "17.257569",
-                "website_link": "https://www.vodafone.cz/en/stores/store-detail/olomouc-oc-santovka/",
-                "preview_image": "",
+                "website_link": "https://www.vodafone.cz/en/calling/prepaid-cards/top-up/",
+                "preview_image": "https://www.vodafone.co.uk/cs/groups/public/documents/webcontent/1287x929_vodafone_logo.jpg",
                 "subcategory_id": [
                         17
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "https://img.firmy.cz/premise/full/201402/2607/fc/530d9901fc6d8f6aa37b0600?v=1",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "https://img.firmy.cz/premise/full/201402/2607/fc/530d9901fc6d8f6aa37b0600?v=1",
                                 "order": 2
                         }
                 ],
                 "content": [
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "Opening hours",
+                                "content_body": "Daily 9:00 - 21:00"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "Contact",
+                                "content_body": "PartnerShopOCSantovkaML@vodafone.cz"
+                        },
+                        {
+                                "content_title": "Services",
+                                "content_body": "Wheelchair accessible. "
                         }
                 ]
         }
@@ -4228,36 +4494,339 @@ This call also contains information for the POI detail section.
 
         {
                 "id": 52,
-                "category_path": "Category -> Vodafone shops",
                 "name": "Vodafone Globus",
                 "full_address": "Pražská 248/39, 779 00 Olomouc - Řepčín",
                 "latitude": "49.601531",
                 "longitude": "17.22308",
-                "website_link": "https://www.vodafone.cz/en/stores/store-detail/olomouc-globus/business-poradce/",
-                "preview_image": "",
+                "website_link": "https://www.vodafone.cz/en/calling/prepaid-cards/top-up/",
+                "preview_image": "https://www.vodafone.co.uk/cs/groups/public/documents/webcontent/1287x929_vodafone_logo.jpg",
                 "subcategory_id": [
                         17
                 ],
                 "image_list": [
                         {
                                 "id": 1,
-                                "image_url": "",
+                                "image_url": "https://www.globus.cz/common/images/shops/295/2015-12-08-13-59-23-415-311-0-1408543535obrazek1%20(8).jpg",
                                 "order": 1
                         },
                         {
                                 "id": 2,
-                                "image_url": "",
+                                "image_url": "https://www.globus.cz/common/images/shops/295/2015-12-08-13-59-23-415-311-0-1408543535obrazek1%20(8).jpg",
                                 "order": 2
                         }
                 ],
                 "content": [
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "Opening hours",
+                                "content_body": "Daily 8:30 - 20:30"
                         },
                         {
-                                "content_title": "Content block title",
-                                "content_body": "Opening hours 24/7"
+                                "content_title": "Contact",
+                                "content_body": "PartnerShopOlomoucGlobusML@vodafone.cz"
+                        },
+                        {
+                                "content_title": "Services",
+                                "content_body": "Wheelchair accessible. Assistance by Vodafone Expert to set up your phone."
+                        }
+                ]
+        }
+
+
+## POI Detail 53 [/poi/53]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 53,
+                "name": "GECO Kaufland",
+                "full_address": "Štursova 3, Olomouc",
+                "latitude": "49.588445",
+                "longitude": "17.271885",
+                "website_link": "https://www.vodafone.cz/en/calling/prepaid-cards/top-up/",
+                "preview_image": "http://geco.jobs.cz/_customer/gecojobscz/wp-content/themes/default/images/logo_share_1500.png",
+                "subcategory_id": [
+                        18
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "https://ibod.blob.core.windows.net/cdn/Thumb/28202-44154.png",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "https://ibod.blob.core.windows.net/cdn/Thumb/28202-44154.png",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Easily top-up your Vodafone SIM card",
+                                "content_body": "All you need to know is your phone number. You can pay <b>cash</b> or with <b>credit card</b>."
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
+                        }
+                ]
+        }
+
+
+## POI Detail 54 [/poi/54]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 54,
+                "name": "GECO OC Haná",
+                "full_address": "Kafkova 1223/8, Olomouc",
+                "latitude": "49.57537",
+                "longitude": "17.228168",
+                "website_link": "https://www.vodafone.cz/en/calling/prepaid-cards/top-up/",
+                "preview_image": "http://geco.jobs.cz/_customer/gecojobscz/wp-content/themes/default/images/logo_share_1500.png",
+                "subcategory_id": [
+                        18
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "https://img.firmy.cz/premise/full/201405/1407/de/53731dbade34d2785b100900?v=1",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "https://img.firmy.cz/premise/full/201405/1407/de/53731dbade34d2785b100900?v=1",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Easily top-up your Vodafone SIM card",
+                                "content_body": "All you need to know is your phone number. You can pay <b>cash</b> or with <b>credit card</b>."
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
+                        }
+                ]
+        }
+
+
+## POI Detail 55 [/poi/55]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 55,
+                "name": "GECO Olomouc City",
+                "full_address": "Pražská 255/41",
+                "latitude": "49.602248",
+                "longitude": "17.220446",
+                "website_link": "https://www.vodafone.cz/en/calling/prepaid-cards/top-up/",
+                "preview_image": "http://geco.jobs.cz/_customer/gecojobscz/wp-content/themes/default/images/logo_share_1500.png",
+                "subcategory_id": [
+                        18
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "http://www.mojecity.cz/UserFiles/Image/1485895271Geco-002.jpg",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "http://www.mojecity.cz/UserFiles/Image/1485895271Geco-002.jpg",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Easily top-up your Vodafone SIM card",
+                                "content_body": "All you need to know is your phone number. You can pay <b>cash</b> or with <b>credit card</b>."
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
+                        }
+                ]
+        }
+
+
+## POI Detail 56 [/poi/56]
+---
+Represents Point of Interest details. One POI can be in more subcategories and categories.
+This is called when user click on the main category tab or during the first
+call of the app, when is dowloaded default category.
+
+**POI attributes:**
+
+- id `(Number)` : Unique Identifier.
+- category_path `(String)` : Full Path for the Category.
+- full_address `(String)` : POI City.
+- name `(String)` : POI Name.
+- latitude `(String)` : POI Latitude coordinates.
+- longitude `(String)` : POI Longitude coordinates.
+- preview_image `(URL)` : POI Preview Image in the List View.
+- image_list `(Array[URL])` : POI List of Images for the Slider in the POI Detail.
+- content_title `(String)` : POI Title of the Content Section.
+- content_body `(String)` : POI Body of the Content Section.
+- website_link `(URL)` : POI URL of the partner website.
+- subcategory_id `(Array(Number))` : POI Subcategory Identifier.
+---
+
+### POI Detail [GET]
+
+POIs are ordered based on the order from the server side.
+
+This call also contains information for the POI detail section.
+
++ Request
+    + Headers
+
+            Authorization: JWT ABC123
+
++ Response 200 (application/json)
+
+        {
+                "id": 56,
+                "name": "GECO Galerie Moritz",
+                "full_address": "8. května 24, Olomouc",
+                "latitude": "49.595286",
+                "longitude": "17.250151",
+                "website_link": "https://www.vodafone.cz/en/calling/prepaid-cards/top-up/",
+                "preview_image": "http://geco.jobs.cz/_customer/gecojobscz/wp-content/themes/default/images/logo_share_1500.png",
+                "subcategory_id": [
+                        18
+                ],
+                "image_list": [
+                        {
+                                "id": 1,
+                                "image_url": "http://cms2.netnews.cz/files/images/806172/24577-DSC_0074.jpg",
+                                "order": 1
+                        },
+                        {
+                                "id": 2,
+                                "image_url": "http://cms2.netnews.cz/files/images/806172/24577-DSC_0074.jpg",
+                                "order": 2
+                        }
+                ],
+                "content": [
+                        {
+                                "content_title": "Easily top-up your Vodafone SIM card",
+                                "content_body": "All you need to know is your phone number. You can pay <b>cash</b> or with <b>credit card</b>."
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
+                        },
+                        {
+                                "content_title": "",
+                                "content_body": ""
                         }
                 ]
         }
